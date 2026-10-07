@@ -5,3 +5,6 @@ node_modules/
 .vercel/
 # Généré depuis scss/ par npm run build:css
 public/assets/css/style.css
+# Générés depuis regles/ et node_modules/ par npm run build:rules
+public/data/regles.json
+public/assets/vendor/

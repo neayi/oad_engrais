@@ -1,19 +1,27 @@
 // Tests du moteur : intégrité des données et comportements agronomiques attendus.
-// Lancer : npm test (Node 20 ou plus, aucune dépendance).
+// Lancer : npm test (Node 20 ou plus). Les règles sont lues directement dans regles/.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
+import Engine from 'publicodes';
+import { loadRules, checkRules } from '../scripts/build-rules.mjs';
 
 const root = new URL('../public/', import.meta.url);
 const read = p => readFileSync(new URL(p, root), 'utf8');
 
-const context = vm.createContext({ PRODUCTS: JSON.parse(read('data/products.json')) });
+const RULES = loadRules();
+const context = vm.createContext({
+  PRODUCTS: JSON.parse(read('data/products.json')),
+  RULES,
+  PublicodesEngine: Engine,
+  console,
+});
 const api = vm.runInContext(
   read('assets/js/rules.js') +
     '\n' +
     read('assets/js/engine.js') +
-    '\n;({ parse, ctxFromParse, defaultCtx, rankAll, equivalents, PBYID, CROPS, EL, EQUIP, OWN, PRODUCTS })',
+    '\n;({ parse, ctxFromParse, defaultCtx, rankAll, stageNeeds, equivalents, PBYID, CROPS, EL, EQUIP, OWN, PRODUCTS })',
   context,
 );
 
@@ -48,11 +56,51 @@ test('les règles ne citent que des éléments et produits existants', () => {
       assert.ok(!stageIds.has(st.id), `${c.id} : stade en double ${st.id}`);
       stageIds.add(st.id);
       assert.ok(['fond', 'semis', 'veg', 'tardif'].includes(st.phase), `${c.id}/${st.id} : phase invalide`);
-      for (const n of st.needs) assert.ok(api.EL[n.el], `${c.id}/${st.id} : élément inconnu ${n.el}`);
-      for (const pid of Object.keys(st.prefer || {}))
+      for (const n of st.needs) assert.ok(api.EL[n.el], `${n.rule} : élément inconnu`);
+      for (const [pid, [bonus, , el]] of Object.entries(st.prefer || {})) {
         assert.ok(api.PBYID[pid], `${c.id}/${st.id} : produit inconnu ${pid}`);
+        assert.equal(typeof bonus, 'number', `${c.id}/${st.id} : bonus manquant pour ${pid}`);
+        if (el) assert.ok(api.EL[el], `${c.id}/${st.id} : élément inconnu ${el}`);
+      }
     }
+    for (const pid of Object.keys(c.prefer || {})) assert.ok(api.PBYID[pid], `${c.id} : produit inconnu ${pid}`);
   }
+});
+
+test('les règles publicodes donnent un niveau, une note et un repère valides dans tous les contextes', () => {
+  checkRules(RULES);
+  for (const pH of ['inconnu', 'acide', 'neutre', 'calcaire'])
+    for (const superficiel of [false, true])
+      for (const pluvieux of [false, true])
+        for (const pro of [false, true]) {
+          const ctx = Object.assign(api.defaultCtx(), { pH, superficiel, pluvieux, pro });
+          for (const c of api.CROPS)
+            for (const st of c.stages)
+              for (const n of api.stageNeeds(c, st, ctx)) {
+                assert.ok([0, 1, 2].includes(n.lvl), `${n.rule} : niveau ${n.lvl} (${pH})`);
+                assert.ok(typeof n.note === 'string' && n.note, `${n.rule} : note manquante`);
+                assert.ok(n.target === null || n.target > 0, `${n.rule} : repère ${n.target}`);
+              }
+        }
+});
+
+test('le contexte de la parcelle ajuste les besoins', () => {
+  const crop = api.CROPS.find(c => c.id === 'colza');
+  const need = (stage, el, ctx) =>
+    api
+      .stageNeeds(
+        crop,
+        crop.stages.find(s => s.id === stage),
+        Object.assign(api.defaultCtx(), ctx),
+      )
+      .find(n => n.el === el);
+  assert.equal(need('reprise', 'S', {}).target, 75);
+  assert.equal(need('reprise', 'S', { pro: true }).target, 50);
+  assert.equal(need('fond', 'pH', { pH: 'acide' }).lvl, 2);
+  assert.equal(need('fond', 'pH', { pH: 'calcaire' }).lvl, 0);
+  assert.match(need('fond', 'pH', { pH: 'calcaire' }).note, /Sol calcaire/);
+  assert.equal(need('reprise', 'B', {}).lvl, 1);
+  assert.equal(need('reprise', 'B', { superficiel: true }).lvl, 2);
 });
 
 /* ---------- Compréhension de la requête ---------- */

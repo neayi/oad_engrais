@@ -2,6 +2,7 @@
 node_modules/
 public/assets/css/
 public/data/
+public/assets/vendor/
 *.md
 *.json
 *.html

@@ -1,0 +1,136 @@
+# =====================================================================
+# RÈGLES AGRONOMIQUES (publicodes, https://publi.codes)
+# Contexte de la parcelle et niveaux de besoin partagés par les cultures.
+#
+# Les fichiers de ce dossier sont lus dans l'ordre alphabétique et réunis
+# par `npm run build:rules` dans public/data/regles.json.
+#
+# Chaque culture est une règle `culture . <nom>`, chaque stade une règle
+# `culture . <nom> . <stade>`, chaque besoin une règle sous le stade, nommée
+# d'après l'élément (azote, phosphore, potasse, soufre, magnésium, chaulage,
+# matière organique, bore, manganèse, zinc).
+#
+# La valeur d'un besoin est son niveau : 2 = prioritaire, 1 = selon
+# situation, 0 = inutile. Elle peut dépendre du contexte, en général par
+# une des règles `niveau . …` ci-dessous.
+#
+# Attributs d'un besoin :
+#   description            note affichée
+#   source                 organisme de référence
+#   explication            règle de texte qui remplace la note quand elle
+#                          s'applique (ex. explication . chaulage)
+#   organique seulement    oui : seuls les produits organiques comptent
+#   <besoin> . repère      sous-règle : repère de dose (kg/ha), qui peut
+#                          dépendre de contexte . apports organiques
+#
+# Attributs d'un stade : titre, id, phase (fond, semis, veg, tardif),
+# mots-clés, préférences.
+# Préférences : { idProduit: { bonus, raison, si besoin en } }, où
+# `si besoin en` (facultatif) limite le bonus aux cas où cet élément est
+# prioritaire ou demandé.
+# =====================================================================
+
+contexte:
+  titre: Contexte de la parcelle
+
+contexte . pH:
+  titre: État du pH du sol
+  description: "'inconnu', 'acide', 'neutre' ou 'calcaire'."
+  par défaut: "'inconnu'"
+
+contexte . sol acide:
+  valeur: pH = 'acide'
+
+contexte . sol calcaire:
+  valeur: pH = 'calcaire'
+
+contexte . pH neutre:
+  valeur: pH = 'neutre'
+
+contexte . sol superficiel:
+  titre: Sol superficiel ou filtrant
+  par défaut: non
+
+contexte . hiver pluvieux:
+  titre: Hiver pluvieux
+  par défaut: non
+
+contexte . apports organiques:
+  titre: Apports organiques réguliers sur la parcelle
+  par défaut: non
+
+niveau:
+  titre: Niveaux de besoin selon le contexte
+  description: 2 = prioritaire, 1 = selon situation, 0 = inutile.
+
+niveau . si sol calcaire:
+  variations:
+    - si: contexte . sol calcaire
+      alors: 2
+    - sinon: 1
+
+niveau . si sol superficiel:
+  variations:
+    - si: contexte . sol superficiel
+      alors: 2
+    - sinon: 1
+
+niveau . si sol superficiel ou hiver pluvieux:
+  variations:
+    - si:
+        une de ces conditions:
+          - contexte . sol superficiel
+          - contexte . hiver pluvieux
+      alors: 2
+    - sinon: 1
+
+niveau . si sol calcaire ou superficiel:
+  variations:
+    - si:
+        une de ces conditions:
+          - contexte . sol calcaire
+          - contexte . sol superficiel
+      alors: 2
+    - sinon: 1
+
+niveau . chaulage:
+  description: >-
+    Culture dont le pH cible est inférieur à 7 : rien à faire en sol calcaire
+    ni à pH neutre, prioritaire en sol acide.
+  variations:
+    - si: contexte . sol calcaire
+      alors: 0
+    - si: contexte . sol acide
+      alors: 2
+    - si: contexte . pH neutre
+      alors: 0
+    - sinon: 1
+
+niveau . chaulage culture exigeante:
+  description: >-
+    Culture dont le pH cible est d'au moins 7 : l'entretien reste utile à pH
+    neutre.
+  variations:
+    - si: contexte . sol calcaire
+      alors: 0
+    - si: contexte . sol acide
+      alors: 2
+    - sinon: 1
+
+explication:
+  titre: Notes qui remplacent celle du besoin selon le contexte
+
+explication . chaulage:
+  variations:
+    - si: contexte . sol calcaire
+      alors: "'Sol calcaire : aucun chaulage nécessaire.'"
+    - si: contexte . pH neutre
+      alors: "\"pH correct : pas de redressement nécessaire ; surveiller l'évolution par l'analyse de terre.\""
+
+explication . chaulage en sol calcaire:
+  variations:
+    - si: contexte . sol calcaire
+      alors: "'Sol calcaire : aucun chaulage nécessaire.'"
+
+culture:
+  titre: Cultures

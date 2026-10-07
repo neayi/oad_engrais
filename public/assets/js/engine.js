@@ -1,6 +1,7 @@
 /* =====================================================================
    MOTEUR : compréhension de la requête, besoins, filtrage, classement.
-   Dépend de PRODUCTS (data/products.json) et de rules.js.
+   Dépend de PRODUCTS (data/products.json) et de rules.js ; les besoins
+   des stades sont évalués par publicodes (RULES_ENGINE).
    ===================================================================== */
 const PBYID = Object.fromEntries(PRODUCTS.map(p => [p.id, p]));
 
@@ -27,36 +28,30 @@ function defaultCtx() {
   };
 }
 
-/* ---------- Besoins du stade, ajustés au contexte ---------- */
-function hasCond(ctx, c) {
-  return c === 'acide'
-    ? ctx.pH === 'acide'
-    : c === 'calcaire'
-      ? ctx.pH === 'calcaire'
-      : c === 'superficiel'
-        ? ctx.superficiel
-        : c === 'pluvieux'
-          ? ctx.pluvieux
-          : false;
+/* ---------- Besoins du stade, évalués par publicodes dans le contexte ---------- */
+let situationKey = null;
+function setSituation(ctx) {
+  const key = [ctx.pH, ctx.superficiel, ctx.pluvieux, ctx.pro].join('/');
+  if (key === situationKey) return;
+  const yn = b => (b ? 'oui' : 'non');
+  RULES_ENGINE.setSituation({
+    'contexte . pH': `'${ctx.pH}'`,
+    'contexte . sol superficiel': yn(ctx.superficiel),
+    'contexte . hiver pluvieux': yn(ctx.pluvieux),
+    'contexte . apports organiques': yn(ctx.pro),
+  });
+  situationKey = key;
+}
+function evalRule(name) {
+  return RULES_ENGINE.evaluate(name).nodeValue;
 }
 function stageNeeds(crop, stage, ctx) {
   if (!stage) return [];
+  setSituation(ctx);
   return stage.needs.map(n => {
-    let lvl = n.lvl,
-      note = n.note,
-      target = n.target != null ? n.target : null;
-    if (n.el === 'pH') {
-      if (ctx.pH === 'calcaire') {
-        lvl = 0;
-        note = 'Sol calcaire : aucun chaulage nécessaire.';
-      } else if (ctx.pH === 'acide') {
-        if (lvl >= 1) lvl = 2;
-      } else if (ctx.pH === 'neutre' && lvl >= 1 && (crop.pHTarget || 6) < 7) {
-        lvl = 0;
-        note = "pH correct : pas de redressement nécessaire ; surveiller l'évolution par l'analyse de terre.";
-      }
-    } else if (lvl === 1 && n.up && n.up.some(c => hasCond(ctx, c))) lvl = 2;
-    if (ctx.pro && n.targetPro != null) target = n.targetPro;
+    const lvl = evalRule(n.rule),
+      note = (n.explication && evalRule(n.explication)) || n.note,
+      target = n.repere ? evalRule(n.repere) : null;
     return Object.assign({}, n, { lvl, note, target });
   });
 }

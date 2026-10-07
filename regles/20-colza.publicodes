@@ -1,0 +1,140 @@
+# Colza
+
+culture . colza:
+  titre: Colza
+  id: colza
+  synonymes: [colza, colzas]
+  exigence phosphore: forte
+  exigence potasse: moyenne
+  sensibilité acidité: moyenne
+
+culture . colza . fumure de fond:
+  titre: Avant semis – semis (août-septembre)
+  id: fond
+  phase: fond
+  mots-clés: [avant semis, fond, fumure de fond, semis, au semis, implantation, aout, septembre, automne]
+  préférences:
+    fumiervol:
+      bonus: 6
+      raison: Azote organique bien valorisé par le colza à l'automne.
+    lisierporc:
+      bonus: 4
+      raison: Azote organique bien valorisé par le colza à l'automne.
+    digestat:
+      bonus: 4
+      raison: Azote organique bien valorisé par le colza à l'automne.
+
+culture . colza . fumure de fond . phosphore:
+  valeur: 2
+  source: COMIFER
+  description: "Exigence forte en phosphore (COMIFER) : apport avant ou au semis, dose selon l'analyse de terre."
+
+culture . colza . fumure de fond . potasse:
+  valeur: 1
+  source: COMIFER
+  description: "Exigence moyenne (COMIFER)."
+
+culture . colza . fumure de fond . azote:
+  valeur: 1
+  organique seulement: oui
+  description: "Les effluents épandus avant semis (fumier de volailles, lisier, digestat) sont bien valorisés par le colza à l'automne. L'azote minéral au semis reste limité et encadré en zone vulnérable."
+
+culture . colza . fumure de fond . matière organique:
+  valeur: 1
+  description: "Fumier ou compost avant semis."
+
+culture . colza . fumure de fond . chaulage:
+  valeur: niveau . chaulage
+  explication: explication . chaulage
+  source: Arvalis
+  description: "Chauler en interculture si le pH eau descend sous 5,8."
+
+culture . colza . fumure de fond . soufre:
+  valeur: 0
+  source: Terres Inovia
+  description: "Inutile à l'automne : la minéralisation couvre les besoins des premiers stades."
+
+culture . colza . fumure de fond . bore:
+  valeur: 0
+  source: Terres Inovia
+  description: "Bore : apport foliaire à privilégier au printemps, à la reprise."
+
+culture . colza . reprise:
+  titre: Reprise de végétation (C1-C2)
+  id: reprise
+  phase: veg
+  mots-clés:
+    [reprise, reprise de vegetation, sortie hiver, sortie d hiver, c1, c2, fevrier, 1er apport, premier apport]
+  préférences: &colza_sulfate
+    sa:
+      bonus: 6
+      raison: Forme sulfate recommandée pour le colza (Terres Inovia).
+    asn:
+      bonus: 8
+      raison: Azote et soufre sulfate en un seul passage, comme le recommande Terres Inovia.
+    soufre:
+      bonus: -30
+      raison: "Soufre élémentaire trop lent : Terres Inovia recommande la forme sulfate au printemps."
+
+culture . colza . reprise . azote:
+  valeur: 2
+  source: Terres Inovia
+  description: "Premier apport à la reprise. Dose totale établie avec la Réglette azote colza (pesées de biomasse entrée et sortie d'hiver) ; premier passage limité à 100 kg N/ha."
+
+culture . colza . reprise . soufre:
+  valeur: 2
+  source: Terres Inovia
+  description: "75 kg SO3/ha sous forme sulfate, avec le 1er ou le 2e apport d'azote (C2 à D1) ; 50 kg SO3/ha si la parcelle reçoit des apports organiques réguliers. Aucun intérêt à fractionner."
+
+culture . colza . reprise . soufre . repère: &soufre_75_50
+  variations:
+    - si: contexte . apports organiques
+      alors: 50
+    - sinon: 75
+
+culture . colza . reprise . bore:
+  valeur: niveau . si sol superficiel
+  source: Terres Inovia
+  description: "En sol sableux ou à risque : bore en foliaire au printemps."
+
+culture . colza . montaison:
+  titre: Début montaison – boutons accolés (C2-D2)
+  id: montaison
+  phase: veg
+  mots-clés: [montaison, debut montaison, d1, d2, boutons accoles, 2e apport, deuxieme apport, mars]
+  préférences: *colza_sulfate
+
+culture . colza . montaison . azote:
+  valeur: 2
+  source: Terres Inovia
+  description: "Deuxième apport ; fractionnement selon la dose totale (Réglette azote colza)."
+
+culture . colza . montaison . soufre:
+  valeur: 2
+  source: Terres Inovia
+  description: "Si le soufre n'a pas encore été apporté : 75 kg SO3/ha sous forme sulfate (50 avec apports organiques réguliers)."
+
+culture . colza . montaison . soufre . repère: *soufre_75_50
+
+culture . colza . montaison . bore:
+  valeur: niveau . si sol superficiel
+  description: "Bore foliaire encore possible en sol à risque."
+
+culture . colza . floraison:
+  titre: Boutons séparés – floraison (E-F)
+  id: floraison
+  phase: tardif
+  mots-clés: [boutons separes, floraison, f1, fleur, avril]
+  préférences:
+    sa:
+      bonus: 10
+      raison: "Rattrapage de carence : sulfate d'ammonium dissous, environ 100 kg/ha."
+
+culture . colza . floraison . azote:
+  valeur: 1
+  source: Terres Inovia
+  description: "Dernier apport possible jusqu'aux boutons séparés pour les fortes doses ; au-delà, plus d'intérêt."
+
+culture . colza . floraison . soufre:
+  valeur: 1
+  description: "Rattrapage possible jusqu'à la floraison en cas de carence : sulfate d'ammonium dissous (environ 100 kg/ha) pour limiter les brûlures."

@@ -1,4 +1,4 @@
-# Teste le moteur, compile le SCSS puis publie le dossier public/ sur GitHub Pages.
+# Teste le moteur, compile le SCSS et les règles publicodes, puis publie le dossier public/ sur GitHub Pages.
 # Activer : Settings > Pages > Source : « GitHub Actions ».
 name: Déploiement GitHub Pages
 
@@ -42,7 +42,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npm run build:css
+      - run: npm run build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

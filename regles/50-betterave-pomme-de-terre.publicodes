@@ -1,0 +1,168 @@
+# Betterave sucrière et pomme de terre
+
+# ---------- Betterave sucrière ----------
+
+culture . betterave:
+  titre: Betterave sucrière
+  id: betterave
+  synonymes: [betterave, betteraves, betterave sucriere, betteraves sucrieres]
+  exigence phosphore: forte
+  exigence potasse: forte
+  sensibilité acidité: forte
+
+culture . betterave . interculture:
+  titre: Interculture – avant semis
+  id: fond
+  phase: fond
+  mots-clés: [interculture, avant semis, fond, fumure de fond, automne, hiver, labour, chaulage]
+  préférences:
+    ecumes:
+      bonus: 12
+      raison: Amendement de référence en zone betteravière.
+    kainite:
+      bonus: 8
+      raison: Apporte du sodium, valorisé par la betterave.
+
+culture . betterave . interculture . chaulage:
+  # pH cible de 7 à 7,5 : l'entretien reste utile à pH neutre.
+  valeur: niveau . chaulage culture exigeante
+  explication: explication . chaulage en sol calcaire
+  source: ITB
+  description: "Culture très sensible à l'acidité : pH optimal entre 7 et 7,5. Chaulage d'entretien régulier, souvent avec des écumes de sucrerie."
+
+culture . betterave . interculture . phosphore:
+  valeur: 2
+  source: COMIFER
+  description: "Exigence forte (COMIFER)."
+
+culture . betterave . interculture . potasse:
+  valeur: 2
+  source: COMIFER
+  description: "Exigence forte (COMIFER). Le sodium (kaïnite) est bien valorisé."
+
+culture . betterave . interculture . matière organique:
+  valeur: 1
+  description: "Effluents ou compost avant le travail du sol."
+
+culture . betterave . interculture . magnésium:
+  valeur: 1
+  description: "Surveiller le magnésium en sols sableux ou très riches en potasse."
+
+culture . betterave . semis:
+  titre: Semis
+  id: semis
+  phase: semis
+  mots-clés: [semis, au semis, mars, avril]
+
+culture . betterave . semis . azote:
+  valeur: 2
+  description: "Apport au semis ou fractionné semis-levée, dose selon la méthode du bilan ; éviter les fortes doses au contact des graines."
+
+culture . betterave . végétation:
+  titre: 4 feuilles – couverture du sol
+  id: veg
+  phase: veg
+  mots-clés: [4 feuilles, 6 feuilles, 8 feuilles, couverture, vegetation, mai, juin]
+
+culture . betterave . végétation . azote:
+  valeur: 0
+  description: "Plus d'azote : il pénaliserait la richesse en sucre."
+
+culture . betterave . végétation . bore:
+  valeur: niveau . si sol calcaire
+  description: "Bore foliaire en prévention de la pourriture du cœur (sols calcaires, années sèches)."
+
+culture . betterave . végétation . manganèse:
+  valeur: niveau . si sol calcaire
+  description: "Manganèse foliaire si carence (sols calcaires ou soufflés)."
+
+culture . betterave . végétation . magnésium:
+  valeur: 1
+  description: "Magnésium foliaire possible en sol sableux ou très riche en potasse."
+
+# ---------- Pomme de terre ----------
+
+culture . pomme de terre:
+  titre: Pomme de terre
+  id: pdt
+  synonymes: [pomme de terre, pommes de terre, pdt, patate, patates]
+  exigence phosphore: forte
+  exigence potasse: forte
+  sensibilité acidité: faible
+  sensible au chlore: oui
+  préférences: &pdt_sans_chlore
+    sop:
+      bonus: 10
+      raison: "Sans chlore : qualité des tubercules préservée."
+    patentkali:
+      bonus: 8
+      raison: Sans chlore, apporte aussi magnésium et soufre.
+
+culture . pomme de terre . fumure de fond:
+  titre: Avant plantation
+  id: fond
+  phase: fond
+  mots-clés: [avant plantation, fond, fumure de fond, automne, hiver, preparation, labour]
+  préférences: *pdt_sans_chlore
+
+culture . pomme de terre . fumure de fond . potasse:
+  valeur: 2
+  source: COMIFER
+  description: "Exigence forte (COMIFER). Culture sensible au chlore (matière sèche, qualité) : sulfate de potassium, ou chlorure apporté tôt (automne-hiver) pour que le chlore soit lessivé."
+
+culture . pomme de terre . fumure de fond . phosphore:
+  valeur: 2
+  source: COMIFER
+  description: "Exigence forte (COMIFER)."
+
+culture . pomme de terre . fumure de fond . magnésium:
+  valeur: 1
+  description: "Magnésium à surveiller en sols sableux."
+
+culture . pomme de terre . fumure de fond . matière organique:
+  valeur: 1
+  description: "Fumier ou compost avant le travail du sol."
+
+culture . pomme de terre . fumure de fond . chaulage:
+  # Jamais de chaulage juste avant la pomme de terre, quel que soit le sol.
+  valeur: 0
+  explication: explication . chaulage en sol calcaire
+  source: Arvalis
+  description: "Éviter de chauler juste avant : la gale commune augmente quand le pH eau approche 7. Ne pas dépasser 6,5 ; chauler sur une autre culture de la rotation."
+
+culture . pomme de terre . plantation:
+  titre: Plantation
+  id: plantation
+  phase: semis
+  mots-clés: [plantation, planter, plante, avril, mars]
+  préférences: *pdt_sans_chlore
+
+culture . pomme de terre . plantation . azote:
+  valeur: 2
+  description: "Apport principal à la plantation (dose par la méthode du bilan), complément éventuel piloté."
+
+culture . pomme de terre . plantation . potasse:
+  valeur: 1
+  description: "Si la potasse n'a pas été apportée : forme sulfate de préférence."
+
+culture . pomme de terre . plantation . phosphore:
+  valeur: 1
+  description: "Si le phosphore n'a pas été apporté en fond."
+
+culture . pomme de terre . végétation:
+  titre: Levée – tubérisation
+  id: veg
+  phase: veg
+  mots-clés: [levee, tuberisation, initiation, buttage, vegetation, mai, juin]
+
+culture . pomme de terre . végétation . azote:
+  valeur: 1
+  description: "Complément piloté par outil si nécessaire, avant la fermeture des rangs."
+
+culture . pomme de terre . végétation . magnésium:
+  valeur: 1
+  description: "Foliaire si carence (sols sableux)."
+
+culture . pomme de terre . végétation . manganèse:
+  valeur: niveau . si sol calcaire
+  description: "Foliaire si carence."

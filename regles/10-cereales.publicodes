@@ -1,0 +1,322 @@
+# Céréales : blé tendre, blé dur, orge d'hiver, orge de printemps.
+# Les trois céréales d'hiver partagent leurs stades et la plupart de leurs
+# besoins par des ancres YAML (&nom, puis *nom).
+
+# ---------- Blé tendre ----------
+
+culture . blé tendre:
+  titre: Blé tendre
+  id: ble_tendre
+  synonymes:
+    [ble, ble tendre, bth, ble tendre d hiver, froment, ble panifiable, ble d hiver, bles]
+  exigence phosphore: faible
+  exigence potasse: faible
+  sensibilité acidité: moyenne
+
+culture . blé tendre . fumure de fond: &cereale_hiver_fond
+  titre: Avant semis (fumure de fond)
+  id: fond
+  phase: fond
+  mots-clés:
+    [avant semis, fond, fumure de fond, semis, au semis, automne, interculture, septembre, octobre, novembre]
+
+culture . blé tendre . fumure de fond . phosphore:
+  valeur: 1
+  source: COMIFER
+  description: "Exigence faible (COMIFER). Dose selon l'analyse de terre et le passé de fertilisation ; impasse possible en sol bien pourvu. Blé sur blé : exigence moyenne."
+
+culture . blé tendre . fumure de fond . potasse:
+  valeur: 1
+  source: COMIFER
+  description: "Exigence faible (COMIFER)."
+
+culture . blé tendre . fumure de fond . chaulage: &ble_fond_chaulage
+  valeur: niveau . chaulage
+  explication: explication . chaulage
+  source: Arvalis
+  description: "Chauler si le pH eau descend sous 5,8 (5,5 en sol sableux). En chaulage d'entretien, éviter l'apport d'automne juste avant une céréale d'hiver (piétin-échaudage)."
+
+culture . blé tendre . fumure de fond . matière organique: &cereale_hiver_fond_mo
+  valeur: 1
+  description: "Fumier ou compost avant le travail du sol : entretien de la matière organique, effet azote faible sur la céréale."
+
+culture . blé tendre . fumure de fond . azote: &cereale_hiver_fond_n
+  valeur: 0
+  description: "Pas d'azote minéral à l'automne sur céréale d'hiver : efficience faible, et apport généralement interdit en zone vulnérable."
+
+culture . blé tendre . fumure de fond . soufre: &cereale_hiver_fond_s
+  valeur: 0
+  source: Arvalis
+  description: "Inutile avant l'hiver : le sulfate serait lessivé avant la montaison."
+
+culture . blé tendre . tallage: &cereale_hiver_tallage
+  titre: Tallage – sortie d'hiver (BBCH 21-29)
+  id: tallage
+  phase: veg
+  mots-clés:
+    [tallage, sortie hiver, sortie d hiver, fin hiver, fin d hiver, fevrier, 1er apport, premier apport, reprise]
+
+culture . blé tendre . tallage . azote: &cereale_hiver_tallage_n
+  valeur: 2
+  source: Arvalis
+  description: "Premier apport, modéré, ajusté au reliquat sortie d'hiver et à l'état du peuplement ; il peut être supprimé si le reliquat est élevé. Il faut 15 à 20 mm de pluie dans les 15 jours pour le valoriser."
+
+culture . blé tendre . tallage . soufre: &cereale_hiver_tallage_s
+  valeur: niveau . si sol superficiel ou hiver pluvieux
+  source: Arvalis
+  description: "Si sol superficiel ou filtrant, hiver pluvieux et pas d'apports organiques réguliers : 20 à 50 kg SO3/ha entre tallage et épi 1 cm (grille Arvalis). Inutile en sol profond après un hiver normal."
+
+culture . blé tendre . tallage . soufre . repère: &soufre_40_20
+  variations:
+    - si: contexte . apports organiques
+      alors: 20
+    - sinon: 40
+
+culture . blé tendre . tallage . manganèse: &ble_tallage_mn
+  valeur: niveau . si sol calcaire
+  description: "Carences fréquentes en sols calcaires, soufflés ou riches en matière organique : correction foliaire dès les premiers symptômes."
+
+culture . blé tendre . épi 1 cm: &cereale_hiver_epi1cm
+  titre: Épi 1 cm (BBCH 30)
+  id: epi1cm
+  phase: veg
+  mots-clés: [epi 1 cm, epi 1cm, epi1cm, debut montaison, montaison, 2e apport, deuxieme apport, mars]
+  préférences:
+    asn:
+      bonus: 10
+      raison: Engrais azoté soufré au bon rapport N/SO3 pour épi 1 cm (Arvalis).
+      si besoin en: S
+
+culture . blé tendre . épi 1 cm . azote: &ble_epi1cm_n
+  valeur: 2
+  source: Arvalis
+  description: "Apport principal de la dose calculée par la méthode du bilan. L'ammonitrate est la forme la plus sûre par temps sec ; urée et solution azotée sont plus sensibles à la volatilisation."
+
+culture . blé tendre . épi 1 cm . soufre: &cereale_hiver_epi1cm_s
+  valeur: niveau . si sol superficiel ou hiver pluvieux
+  source: Arvalis
+  description: "En situation à risque, le meilleur compromis est un engrais azoté soufré (rapport N/SO3 entre 2 et 3) apporté à épi 1 cm."
+
+culture . blé tendre . épi 1 cm . soufre . repère: *soufre_40_20
+
+culture . blé tendre . épi 1 cm . manganèse: &cereale_hiver_epi1cm_mn
+  valeur: niveau . si sol calcaire
+  description: "Correction foliaire si symptômes (sols calcaires ou soufflés)."
+
+culture . blé tendre . nœuds: &cereale_hiver_noeuds
+  titre: 1 à 2 nœuds (BBCH 31-32)
+  id: noeuds
+  phase: veg
+  mots-clés:
+    [1 noeud, 2 noeuds, 1-2 noeuds, 1 2 noeuds, noeud, noeuds, 3e apport, troisieme apport, avril]
+
+culture . blé tendre . nœuds . azote: &cereale_hiver_noeuds_n
+  valeur: 1
+  description: "Fin du plan de fumure, ou dose réservée et pilotée avec un outil (capteur, imagerie)."
+
+culture . blé tendre . nœuds . soufre: &cereale_hiver_noeuds_s
+  valeur: niveau . si sol superficiel
+  description: "Rattrapage encore possible en cas de symptômes, avec une efficacité partielle."
+
+culture . blé tendre . nœuds . soufre . repère: &soufre_30
+  valeur: 30
+
+culture . blé tendre . dernière feuille: &cereale_hiver_dfe
+  titre: Dernière feuille – épiaison (BBCH 37-55)
+  id: dfe
+  phase: tardif
+  mots-clés: [derniere feuille, dfe, gonflement, epiaison, apport tardif, proteines, proteine, mai]
+
+culture . blé tendre . dernière feuille . azote:
+  valeur: 1
+  source: Arvalis
+  description: "Apport « protéines » piloté par outil, surtout pour les blés améliorants ou à objectif protéique. Son efficacité dépend de la pluie qui suit."
+
+culture . blé tendre . dernière feuille . phosphore: &pk_vegetation
+  valeur: 0
+  source: Arvalis
+  description: "Phosphore et potasse en végétation : sans effet sur la production des grandes cultures."
+
+culture . blé tendre . dernière feuille . potasse: *pk_vegetation
+
+# ---------- Blé dur ----------
+
+culture . blé dur:
+  titre: Blé dur
+  id: ble_dur
+  synonymes: [ble dur, btd, ble dur d hiver]
+  exigence phosphore: moyenne
+  exigence potasse: faible
+  sensibilité acidité: moyenne
+
+culture . blé dur . fumure de fond: *cereale_hiver_fond
+
+culture . blé dur . fumure de fond . phosphore: &exigence_p_moyenne_fond
+  valeur: 1
+  source: COMIFER
+  description: "Exigence moyenne (COMIFER). Dose selon l'analyse de terre et le passé de fertilisation ; impasse possible en sol bien pourvu."
+
+culture . blé dur . fumure de fond . potasse: &exigence_k_faible
+  valeur: 1
+  source: COMIFER
+  description: "Exigence faible (COMIFER)."
+
+culture . blé dur . fumure de fond . chaulage: *ble_fond_chaulage
+culture . blé dur . fumure de fond . matière organique: *cereale_hiver_fond_mo
+culture . blé dur . fumure de fond . azote: *cereale_hiver_fond_n
+culture . blé dur . fumure de fond . soufre: *cereale_hiver_fond_s
+
+culture . blé dur . tallage: *cereale_hiver_tallage
+culture . blé dur . tallage . azote: *cereale_hiver_tallage_n
+culture . blé dur . tallage . soufre: *cereale_hiver_tallage_s
+culture . blé dur . tallage . soufre . repère: *soufre_40_20
+culture . blé dur . tallage . manganèse: *ble_tallage_mn
+
+culture . blé dur . épi 1 cm: *cereale_hiver_epi1cm
+culture . blé dur . épi 1 cm . azote: *ble_epi1cm_n
+culture . blé dur . épi 1 cm . soufre: *cereale_hiver_epi1cm_s
+culture . blé dur . épi 1 cm . soufre . repère: *soufre_40_20
+culture . blé dur . épi 1 cm . manganèse: *cereale_hiver_epi1cm_mn
+
+culture . blé dur . nœuds: *cereale_hiver_noeuds
+culture . blé dur . nœuds . azote: *cereale_hiver_noeuds_n
+culture . blé dur . nœuds . soufre: *cereale_hiver_noeuds_s
+culture . blé dur . nœuds . soufre . repère: *soufre_30
+
+culture . blé dur . dernière feuille: *cereale_hiver_dfe
+
+culture . blé dur . dernière feuille . azote:
+  valeur: 2
+  source: Arvalis
+  description: "Blé dur : apport tardif quasi indispensable pour la teneur en protéines et contre le mitadinage ; dose pilotée par outil."
+
+culture . blé dur . dernière feuille . phosphore: *pk_vegetation
+culture . blé dur . dernière feuille . potasse: *pk_vegetation
+
+# ---------- Orge d'hiver ----------
+
+culture . orge hiver:
+  titre: Orge d'hiver
+  id: orge_h
+  synonymes: [orge, orges, orge d hiver, orge hiver, escourgeon]
+  exigence phosphore: moyenne
+  exigence potasse: faible
+  sensibilité acidité: forte
+
+culture . orge hiver . fumure de fond: *cereale_hiver_fond
+culture . orge hiver . fumure de fond . phosphore: *exigence_p_moyenne_fond
+culture . orge hiver . fumure de fond . potasse: *exigence_k_faible
+
+culture . orge hiver . fumure de fond . chaulage:
+  valeur: niveau . chaulage
+  explication: explication . chaulage
+  source: Arvalis
+  description: "L'orge est sensible à l'acidité : à éviter si le pH eau est inférieur à 5,8. Chauler de préférence avant le précédent."
+
+culture . orge hiver . fumure de fond . matière organique: *cereale_hiver_fond_mo
+culture . orge hiver . fumure de fond . azote: *cereale_hiver_fond_n
+culture . orge hiver . fumure de fond . soufre: *cereale_hiver_fond_s
+
+culture . orge hiver . tallage: *cereale_hiver_tallage
+culture . orge hiver . tallage . azote: *cereale_hiver_tallage_n
+culture . orge hiver . tallage . soufre: *cereale_hiver_tallage_s
+culture . orge hiver . tallage . soufre . repère: *soufre_40_20
+
+culture . orge hiver . tallage . manganèse:
+  valeur: niveau . si sol calcaire
+  description: "L'orge est très sensible à la carence en manganèse. Carences fréquentes en sols calcaires, soufflés ou riches en matière organique : correction foliaire dès les premiers symptômes."
+
+culture . orge hiver . épi 1 cm: *cereale_hiver_epi1cm
+
+culture . orge hiver . épi 1 cm . azote:
+  valeur: 2
+  source: Arvalis
+  description: "Apport principal de la dose calculée par la méthode du bilan. L'ammonitrate est la forme la plus sûre par temps sec ; urée et solution azotée sont plus sensibles à la volatilisation. Orge brassicole : dose totale limitée pour respecter la teneur en protéines."
+
+culture . orge hiver . épi 1 cm . soufre: *cereale_hiver_epi1cm_s
+culture . orge hiver . épi 1 cm . soufre . repère: *soufre_40_20
+culture . orge hiver . épi 1 cm . manganèse: *cereale_hiver_epi1cm_mn
+
+culture . orge hiver . nœuds: *cereale_hiver_noeuds
+culture . orge hiver . nœuds . azote: *cereale_hiver_noeuds_n
+culture . orge hiver . nœuds . soufre: *cereale_hiver_noeuds_s
+culture . orge hiver . nœuds . soufre . repère: *soufre_30
+
+culture . orge hiver . dernière feuille: *cereale_hiver_dfe
+
+culture . orge hiver . dernière feuille . azote:
+  valeur: 0
+  description: "Orge : pas d'apport tardif, qui augmenterait la teneur en protéines (pénalisant en brassicole)."
+
+culture . orge hiver . dernière feuille . phosphore: *pk_vegetation
+culture . orge hiver . dernière feuille . potasse: *pk_vegetation
+
+# ---------- Orge de printemps ----------
+
+culture . orge printemps:
+  titre: Orge de printemps
+  id: orge_p
+  synonymes: [orge de printemps, orge printemps, orge brassicole]
+  exigence phosphore: moyenne
+  exigence potasse: faible
+  sensibilité acidité: forte
+
+culture . orge printemps . semis:
+  titre: Avant semis – semis
+  id: semis
+  phase: semis
+  mots-clés: [avant semis, semis, au semis, fond, fumure de fond, fevrier, mars]
+
+culture . orge printemps . semis . phosphore:
+  valeur: 1
+  source: COMIFER
+  description: "Exigence moyenne (COMIFER)."
+
+culture . orge printemps . semis . potasse: *exigence_k_faible
+
+culture . orge printemps . semis . chaulage:
+  valeur: niveau . chaulage
+  explication: explication . chaulage
+  source: Arvalis
+  description: "L'orge est sensible à l'acidité : à éviter si le pH eau est inférieur à 5,8."
+
+culture . orge printemps . semis . azote:
+  valeur: 1
+  description: "Une partie de la dose peut être apportée au semis (fractionnement semis – tallage)."
+
+culture . orge printemps . tallage:
+  titre: Levée – tallage
+  id: tallage
+  phase: veg
+  mots-clés: [tallage, levee, 2 feuilles, 3 feuilles, avril]
+
+culture . orge printemps . tallage . azote:
+  valeur: 2
+  source: Arvalis
+  description: "Apport principal de la dose calculée par la méthode du bilan ; en brassicole, dose limitée pour la teneur en protéines."
+
+culture . orge printemps . tallage . soufre:
+  valeur: niveau . si sol superficiel ou hiver pluvieux
+  source: Arvalis
+  description: "Céréale de printemps : dose réduite de 20 kg SO3/ha par rapport aux céréales d'hiver, en situation à risque."
+
+culture . orge printemps . tallage . soufre . repère:
+  valeur: 20
+
+culture . orge printemps . tallage . manganèse:
+  valeur: niveau . si sol calcaire
+  description: "L'orge est très sensible à la carence en manganèse : correction foliaire."
+
+culture . orge printemps . épi 1 cm:
+  titre: Épi 1 cm – montaison
+  id: epi1cm
+  phase: veg
+  mots-clés: [epi 1 cm, epi 1cm, montaison, debut montaison, mai]
+
+culture . orge printemps . épi 1 cm . azote:
+  valeur: 1
+  description: "Complément éventuel, piloté ; à éviter en orge brassicole."
+
+culture . orge printemps . épi 1 cm . manganèse:
+  valeur: niveau . si sol calcaire
+  description: "Correction foliaire si symptômes."

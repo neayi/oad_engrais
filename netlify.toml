@@ -1,5 +1,6 @@
-# Netlify : site statique ; seul le CSS est compilé (scss/ -> public/assets/css/style.css).
+# Netlify : site statique ; le build compile le CSS (scss/ -> public/assets/css/style.css)
+# et les règles publicodes (regles/ -> public/data/regles.json).
 # Les en-têtes sont dans public/_headers.
 [build]
-  command = "npm run build:css"
+  command = "npm run build"
   publish = "public"

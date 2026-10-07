@@ -1,0 +1,92 @@
+# Maïs
+
+culture . maïs:
+  titre: Maïs
+  id: mais
+  synonymes: [mais grain, mais ensilage, mais fourrage, mais semence, mais]
+  # « mais » est aussi une conjonction : reconnu seulement si aucune autre culture n'est citée.
+  synonymes ambigus: [mais]
+  exigence phosphore: faible (grain) à moyenne (ensilage)
+  exigence potasse: moyenne
+  sensibilité acidité: faible
+
+culture . maïs . fumure de fond:
+  titre: Avant semis (fumure de fond, effluents)
+  id: fond
+  phase: fond
+  mots-clés: [avant semis, fond, fumure de fond, printemps, preparation, labour, effluents]
+
+culture . maïs . fumure de fond . phosphore:
+  valeur: 1
+  source: COMIFER
+  description: "Exigence faible pour le maïs grain, moyenne pour le maïs ensilage (COMIFER)."
+
+culture . maïs . fumure de fond . potasse:
+  valeur: 1
+  source: COMIFER
+  description: "Exigence moyenne (COMIFER)."
+
+culture . maïs . fumure de fond . azote:
+  valeur: 1
+  organique seulement: oui
+  description: "Les effluents (lisier, fumier, digestat) sont bien valorisés par le maïs : épandre peu avant le semis et enfouir rapidement."
+
+culture . maïs . fumure de fond . matière organique:
+  valeur: 1
+  description: "Fumier ou compost avant le travail du sol."
+
+culture . maïs . fumure de fond . chaulage:
+  valeur: niveau . chaulage
+  explication: explication . chaulage
+  source: Arvalis
+  description: "Le maïs est peu sensible à l'acidité ; chaulage d'entretien si le pH eau descend sous 5,8."
+
+culture . maïs . semis:
+  titre: Semis (localisation)
+  id: semis
+  phase: semis
+  mots-clés: [semis, au semis, starter, localise, localisation, engrais starter, avril]
+  préférences:
+    map:
+      bonus: 10
+      raison: Starter localisé de référence, mieux toléré par la semence que le DAP.
+    app:
+      bonus: 6
+      raison: Starter liquide localisé.
+    dap:
+      bonus: 3
+      raison: Utilisable en localisé, sans contact direct avec la graine.
+
+culture . maïs . semis . phosphore:
+  valeur: 2
+  description: "Starter phosphaté localisé au semis : efficace en sol froid, pauvre ou calcaire."
+
+culture . maïs . semis . zinc:
+  valeur: niveau . si sol calcaire
+  description: "Le maïs est sensible à la carence en zinc (sols calcaires, riches en phosphore) : zinc localisé au semis."
+
+culture . maïs . semis . azote:
+  valeur: 1
+  source: Arvalis
+  description: "En situation fragile (sol filtrant, semis précoce en zone pluvieuse), environ 30 kg N/ha vers 2-3 feuilles."
+
+culture . maïs . avant 8 feuilles:
+  titre: Avant 6-8 feuilles (apport principal)
+  id: f68
+  phase: veg
+  mots-clés: [6 feuilles, 8 feuilles, 6-8 feuilles, 6 8 feuilles, binage, juin, apport principal]
+
+culture . maïs . avant 8 feuilles . azote:
+  valeur: 2
+  source: Arvalis
+  description: "Apport principal juste avant 6-8 feuilles. Urée et solution 39 sont les formes les plus sensibles à la volatilisation : enfouir (binage) ou attendre une pluie de 20 à 30 mm."
+
+culture . maïs . dix feuilles et plus:
+  titre: 10 feuilles et plus
+  id: f10
+  phase: tardif
+  mots-clés: [10 feuilles, 12 feuilles, fertirrigation, irrigation, floraison, panicule]
+
+culture . maïs . dix feuilles et plus . azote:
+  valeur: 1
+  description: "Complément possible par fertirrigation ou piloté par outil ; le passage du tracteur devient limitant."

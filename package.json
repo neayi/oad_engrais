@@ -6,18 +6,24 @@
   "type": "module",
   "scripts": {
     "build:css": "sass --no-source-map --style=compressed scss/style.scss public/assets/css/style.css",
+    "build:rules": "node scripts/build-rules.mjs",
+    "build": "npm run build:css && npm run build:rules",
     "watch:css": "sass --no-source-map --watch scss/style.scss:public/assets/css/style.css",
-    "predev": "npm run build:css",
+    "predev": "npm run build",
     "dev": "npx --yes serve@14 public -l 8080",
     "test": "node --test tests/engine.test.mjs",
-    "format": "prettier --write \"scss/**/*.scss\" \"public/assets/js/**/*.js\" \"tests/**/*.mjs\"",
-    "format:check": "prettier --check \"scss/**/*.scss\" \"public/assets/js/**/*.js\" \"tests/**/*.mjs\""
+    "format": "prettier --write \"scss/**/*.scss\" \"public/assets/js/**/*.js\" \"tests/**/*.mjs\" \"scripts/**/*.mjs\"",
+    "format:check": "prettier --check \"scss/**/*.scss\" \"public/assets/js/**/*.js\" \"tests/**/*.mjs\" \"scripts/**/*.mjs\""
   },
   "engines": {
     "node": ">=20"
   },
   "devDependencies": {
     "prettier": "3.9.9",
-    "sass": "^1.105.1"
+    "sass": "^1.105.1",
+    "yaml": "^2.9.1"
+  },
+  "dependencies": {
+    "publicodes": "1.10.3"
   }
 }

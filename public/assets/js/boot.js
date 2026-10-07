@@ -1,4 +1,4 @@
-/* Charge les données produits, puis les règles, le moteur et l'interface, dans cet ordre. */
+/* Charge le moteur publicodes, les données produits et les règles, puis les scripts du référentiel, du moteur et de l'interface, dans cet ordre. */
 (function () {
   'use strict';
   var base = document.currentScript.src.replace(/assets\/js\/boot\.js(\?.*)?$/, '');
@@ -8,14 +8,22 @@
     var r = document.getElementById('results');
     if (r) r.innerHTML = '<div class="banner stop"><span>' + msg + '</span></div>';
   }
-
-  fetch(base + 'data/products.json', { credentials: 'same-origin' })
-    .then(function (res) {
-      if (!res.ok) throw new Error('HTTP ' + res.status);
+  function getJSON(path) {
+    return fetch(base + path, { credentials: 'same-origin' }).then(function (res) {
+      if (!res.ok) throw new Error(path + ' : HTTP ' + res.status);
       return res.json();
-    })
-    .then(function (data) {
-      window.PRODUCTS = data;
+    });
+  }
+
+  Promise.all([
+    getJSON('data/products.json'),
+    getJSON('data/regles.json'),
+    import(base + 'assets/vendor/publicodes.js'),
+  ])
+    .then(function (loaded) {
+      window.PRODUCTS = loaded[0];
+      window.RULES = loaded[1];
+      window.PublicodesEngine = loaded[2].default;
       scripts.forEach(function (src) {
         var s = document.createElement('script');
         s.src = base + src;
@@ -30,7 +38,7 @@
       fail(
         location.protocol === 'file:'
           ? 'Ce site doit être servi par un serveur web. Depuis le dossier du projet : <code>npm run dev</code> ou <code>python3 -m http.server -d public 8080</code>.'
-          : 'Impossible de charger les données des produits (' + e.message + '). Rechargez la page.',
+          : 'Impossible de charger les données ou les règles (' + e.message + '). Rechargez la page.',
       );
     });
 })();

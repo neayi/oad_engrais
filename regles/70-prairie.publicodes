@@ -1,0 +1,98 @@
+# Prairie (graminées)
+
+culture . prairie:
+  titre: Prairie (graminées)
+  id: prairie
+  synonymes:
+    [prairie, prairies, herbe, ray-grass, ray grass, raygrass, paturage, pature, paturages, prairie temporaire, prairie permanente]
+  # Culture pérenne : amendements et produits organiques lents restent possibles sur la culture en place.
+  pérenne: oui
+  exigence phosphore: moyenne
+  exigence potasse: moyenne
+  sensibilité acidité: faible
+
+culture . prairie . sortie hiver:
+  titre: Sortie d'hiver (T200)
+  id: sortie
+  phase: veg
+  mots-clés: [sortie hiver, sortie d hiver, t200, fevrier, mars, printemps, 1er apport, premier apport, reprise]
+  préférences:
+    kainite:
+      bonus: 6
+      raison: "Magnésium et sodium : prévention de la tétanie d'herbage."
+    lisierbov:
+      bonus: 5
+      raison: Lisier aux pendillards en sortie d'hiver, bien valorisé par l'herbe.
+
+culture . prairie . sortie hiver . azote:
+  valeur: 2
+  description: "Premier apport quand la somme des températures depuis le 1er janvier atteint 200 °C·jours (repère T200)."
+
+culture . prairie . sortie hiver . phosphore:
+  valeur: 1
+  source: COMIFER
+  description: "Exigence moyenne (COMIFER)."
+
+culture . prairie . sortie hiver . potasse:
+  valeur: 1
+  source: COMIFER
+  description: "Exigence moyenne (COMIFER), exportations élevées en fauche."
+
+culture . prairie . sortie hiver . magnésium:
+  valeur: 1
+  description: "Pâtures : prévention de la tétanie d'herbage avec du magnésium (et du sodium)."
+
+culture . prairie . sortie hiver . soufre:
+  valeur: niveau . si sol superficiel
+  description: "Prairies fauchées intensives en sol filtrant : le soufre peut devenir limitant."
+
+culture . prairie . entre deux cycles:
+  titre: Entre deux cycles (après fauche ou pâture)
+  id: cycles
+  phase: veg
+  mots-clés:
+    [apres fauche, apres coupe, apres paturage, entre cycles, entre deux cycles, repousse, ensilage, foin, juin]
+  préférences:
+    lisierbov:
+      bonus: 6
+      raison: "Après fauche, aux pendillards : bonne valorisation."
+    digestat:
+      bonus: 5
+      raison: "Après fauche, aux pendillards : bonne valorisation."
+
+culture . prairie . entre deux cycles . azote:
+  valeur: 2
+  description: "Apport après chaque exploitation, selon le rythme de fauche ou de pâture."
+
+culture . prairie . entre deux cycles . potasse:
+  valeur: 1
+  description: "Fauches répétées : exportations de potasse élevées."
+
+culture . prairie . automne:
+  titre: Automne – entretien
+  id: automne
+  phase: fond
+  mots-clés: [automne, hiver, entretien, octobre, novembre]
+
+culture . prairie . automne . matière organique:
+  valeur: 1
+  description: "Fumier ou compost à l'automne ou en fin d'hiver."
+
+culture . prairie . automne . chaulage:
+  valeur: niveau . chaulage
+  explication: explication . chaulage
+  description: "Chaulage d'entretien des prairies, possible en surface."
+
+culture . prairie . automne . phosphore:
+  valeur: 1
+  source: COMIFER
+  description: "Exigence moyenne (COMIFER)."
+
+culture . prairie . automne . potasse:
+  valeur: 1
+  source: COMIFER
+  description: "Exigence moyenne (COMIFER)."
+
+culture . prairie . automne . azote:
+  valeur: 0
+  description: "Pas d'azote minéral à l'automne : risque de lessivage."

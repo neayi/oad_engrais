@@ -1,0 +1,92 @@
+# Tournesol
+
+culture . tournesol:
+  titre: Tournesol
+  id: tournesol
+  synonymes: [tournesol, tournesols]
+  exigence phosphore: faible
+  exigence potasse: moyenne
+  sensibilité acidité: moyenne
+
+culture . tournesol . fumure de fond:
+  titre: Avant semis – semis
+  id: fond
+  phase: fond
+  mots-clés: [avant semis, fond, fumure de fond, semis, au semis, avril, preparation]
+
+culture . tournesol . fumure de fond . phosphore:
+  valeur: 1
+  source: COMIFER
+  description: "Exigence faible (COMIFER)."
+
+culture . tournesol . fumure de fond . potasse:
+  valeur: 1
+  source: COMIFER
+  description: "Exigence moyenne (COMIFER)."
+
+culture . tournesol . fumure de fond . azote:
+  valeur: 1
+  source: Terres Inovia
+  description: "Besoins modérés, excès néfastes. L'apport en végétation est souvent mieux valorisé qu'au semis."
+
+culture . tournesol . fumure de fond . bore:
+  valeur: niveau . si sol calcaire ou superficiel
+  source: Terres Inovia
+  description: "En sol à risque (calcaire, superficiel, retour fréquent du tournesol) : environ 1,2 kg B/ha avant semis, incorporé ou non ; le foliaire en végétation reste mieux valorisé."
+
+culture . tournesol . fumure de fond . bore . repère:
+  valeur: 1.2
+
+culture . tournesol . fumure de fond . chaulage:
+  valeur: niveau . chaulage
+  explication: explication . chaulage
+  source: Terres Inovia
+  description: "En sol acide, carences en molybdène (feuilles en cuillère) : vérifier le pH et chauler si besoin."
+
+culture . tournesol . végétation:
+  titre: 6 à 14 feuilles
+  id: veg
+  phase: veg
+  mots-clés:
+    [6 feuilles, 8 feuilles, 10 feuilles, 12 feuilles, 14 feuilles, vegetation, mai, juin, limite passage tracteur]
+  préférences:
+    amm33:
+      bonus: 6
+      raison: Forme solide recommandée en végétation (Terres Inovia).
+    can27:
+      bonus: 6
+      raison: Forme solide recommandée en végétation (Terres Inovia).
+    uree:
+      bonus: 4
+      raison: Forme solide recommandée en végétation (Terres Inovia).
+    sol39:
+      bonus: -10
+      raison: "Forme liquide déconseillée en végétation sur tournesol : préférer une forme solide (Terres Inovia)."
+
+culture . tournesol . végétation . azote:
+  valeur: 1
+  source: Terres Inovia
+  description: "Apport en végétation mieux synchronisé avec les besoins : forme solide (ammonitrate ou urée), avant 14 feuilles ; dose par la méthode du bilan ou Héliotest."
+
+culture . tournesol . végétation . bore:
+  valeur: niveau . si sol calcaire ou superficiel
+  source: Terres Inovia
+  description: "Préventif uniquement : 300 à 500 g B/ha en foliaire entre 10 feuilles et la limite de passage du tracteur (55-60 cm). Inutile une fois les symptômes visibles."
+
+culture . tournesol . végétation . bore . repère:
+  valeur: 0.4
+
+culture . tournesol . bouton floral:
+  titre: Bouton floral – floraison
+  id: bouton
+  phase: tardif
+  mots-clés: [bouton, bouton floral, floraison, juillet]
+
+culture . tournesol . bouton floral . azote:
+  valeur: 0
+  description: "Trop tard pour l'azote."
+
+culture . tournesol . bouton floral . bore:
+  valeur: 0
+  source: Terres Inovia
+  description: "Trop tard pour le bore : la carence s'est déjà exprimée."
