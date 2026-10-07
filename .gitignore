@@ -3,3 +3,5 @@ node_modules/
 .netlify/
 .wrangler/
 .vercel/
+# Généré depuis scss/ par npm run build:css
+public/assets/css/style.css

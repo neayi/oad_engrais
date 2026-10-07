@@ -5,10 +5,16 @@
   "description": "Moteur de choix des engrais et amendements selon la culture, le stade, le sol et la météo.",
   "type": "module",
   "scripts": {
+    "build:css": "sass --no-source-map --style=compressed scss/style.scss public/assets/css/style.css",
+    "watch:css": "sass --no-source-map --watch scss/style.scss:public/assets/css/style.css",
+    "predev": "npm run build:css",
     "dev": "npx --yes serve@14 public -l 8080",
     "test": "node --test tests/engine.test.mjs"
   },
   "engines": {
     "node": ">=20"
+  },
+  "devDependencies": {
+    "sass": "^1.105.1"
   }
 }

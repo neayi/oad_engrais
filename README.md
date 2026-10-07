@@ -2,7 +2,7 @@
 
 Aide au choix d'un engrais ou d'un amendement selon la culture, le stade, le sol, la météo et les contraintes de l'exploitation. Repères issus du COMIFER, d'Arvalis, de Terres Inovia et de l'ITB.
 
-Le site est **entièrement statique** : HTML, CSS et JavaScript sans framework, sans étape de build, sans serveur applicatif ni base de données. Tout le calcul se fait dans le navigateur. Le site pèse environ 300 Ko.
+Le site est **entièrement statique** : HTML, CSS et JavaScript sans framework, sans serveur applicatif ni base de données. Tout le calcul se fait dans le navigateur. Le site pèse environ 300 Ko. Seule étape de build : la compilation de la feuille de style SCSS.
 
 ## Structure
 
@@ -16,8 +16,9 @@ public/                    ← dossier à publier, tel quel
   assets/js/rules.js       règles agronomiques : cultures × stades, besoins, symptômes
   assets/js/engine.js      compréhension de la requête, filtrage, classement
   assets/js/ui.js          interface
-  assets/css/              styles et déclarations de polices
+  assets/css/              déclarations de polices et style.css (généré, non versionné)
   assets/fonts/            polices hébergées en local (licence OFL incluse)
+scss/style.scss            source des styles, compilée vers public/assets/css/style.css
 tests/engine.test.mjs      tests du moteur (Node, sans dépendance)
 nginx/default.conf         configuration nginx (sécurité, cache, compression)
 Dockerfile                 image nginx non root
@@ -30,10 +31,12 @@ netlify.toml               configuration Netlify
 Le site doit être servi en HTTP (le chargement de `products.json` échoue en `file://`).
 
 ```bash
-npm run dev                          # http://localhost:8080 (via npx serve)
-# ou, sans Node :
-python3 -m http.server -d public 8080
+npm install                          # une fois : installe Sass
+npm run dev                          # compile le CSS puis sert sur http://localhost:8080
+npm run watch:css                    # dans un second terminal : recompile à chaque modification
 ```
+
+Les styles se modifient dans `scss/style.scss`, jamais dans `public/assets/css/style.css` qui est régénéré par `npm run build:css`.
 
 ## Tests
 
@@ -45,27 +48,28 @@ Ils vérifient l'intégrité des données (identifiants uniques, éléments et m
 
 ## Déployer
 
-Toutes les options publient le dossier `public/`. Aucune commande de build.
+Toutes les options publient le dossier `public/`, après `npm ci && npm run build:css` pour générer la feuille de style.
 
 ### Netlify
 
-- Glisser-déposer le dossier `public/` sur app.netlify.com/drop, ou
+- Lancer `npm run build:css`, puis glisser-déposer le dossier `public/` sur app.netlify.com/drop, ou
 - `npx netlify-cli deploy --dir=public --prod`, ou
-- connecter le dépôt Git : `netlify.toml` indique déjà le dossier à publier.
+- connecter le dépôt Git : `netlify.toml` indique déjà la commande de build et le dossier à publier.
 
 Les en-têtes de `public/_headers` sont appliqués automatiquement.
 
 ### Cloudflare Pages
 
 ```bash
+npm run build:css
 npx wrangler pages deploy public --project-name moteur-engrais
 ```
 
-Ou connecter le dépôt dans le tableau de bord, commande de build vide, dossier de sortie `public`. `_headers` est pris en compte.
+Ou connecter le dépôt dans le tableau de bord, commande de build `npm run build:css`, dossier de sortie `public`. `_headers` est pris en compte.
 
 ### GitHub Pages
 
-Le workflow `.github/workflows/deploy-pages.yml` lance les tests puis publie `public/` à chaque push sur `main`. Activer dans *Settings > Pages > Source : GitHub Actions*. GitHub Pages ne permet pas de définir d'en-têtes HTTP : pas de CSP sur cette option.
+Le workflow `.github/workflows/deploy-pages.yml` lance les tests, compile le CSS puis publie `public/` à chaque push sur `main`. Activer dans *Settings > Pages > Source : GitHub Actions*. GitHub Pages ne permet pas de définir d'en-têtes HTTP : pas de CSP sur cette option.
 
 ### Serveur ou VPS avec Docker
 
@@ -74,11 +78,11 @@ docker build -t moteur-engrais .
 docker run -d --name moteur-engrais -p 8080:8080 --restart unless-stopped moteur-engrais
 ```
 
-Placer ensuite un reverse proxy TLS devant (Caddy, Traefik, nginx). L'image écoute sur 8080 et tourne sans root.
+Placer ensuite un reverse proxy TLS devant (Caddy, Traefik, nginx). Le CSS est compilé dans une première étape de l'image. L'image finale écoute sur 8080 et tourne sans root.
 
 ### Serveur web existant
 
-Copier le contenu de `public/` dans un dossier servi par nginx ou Apache. Le site fonctionne aussi dans un sous-dossier (`https://exemple.fr/moteur/`). Pour nginx, reprendre les directives de `nginx/default.conf` ; pour Apache, transposer les en-têtes de `public/_headers` dans un `.htaccess`.
+Lancer `npm run build:css`, puis copier le contenu de `public/` dans un dossier servi par nginx ou Apache. Le site fonctionne aussi dans un sous-dossier (`https://exemple.fr/moteur/`). Pour nginx, reprendre les directives de `nginx/default.conf` ; pour Apache, transposer les en-têtes de `public/_headers` dans un `.htaccess`.
 
 ### Intégrer à un site existant en iframe
 
