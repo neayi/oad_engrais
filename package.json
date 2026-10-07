@@ -1,0 +1,14 @@
+{
+  "name": "moteur-engrais",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Moteur de choix des engrais et amendements selon la culture, le stade, le sol et la météo.",
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes serve@14 public -l 8080",
+    "test": "node --test tests/engine.test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

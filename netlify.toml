@@ -1,0 +1,3 @@
+# Netlify : site statique, aucun build. Les en-têtes sont dans public/_headers.
+[build]
+  publish = "public"

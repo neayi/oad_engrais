@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quel engrais, pour quelle culture, à quel stade ?</title>
+<meta name="description" content="Moteur de choix des engrais et amendements selon la culture, le stade, le sol et la météo. Repères COMIFER, Arvalis, Terres Inovia.">
+<meta name="theme-color" content="#1F4231">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/atkinson-hyperlegible-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/barlow-semi-condensed-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="data/products.json" as="fetch" type="application/json" crossorigin>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/boot.js" defer></script>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-in">
+    <div class="topline">
+      <span class="brand">Moteur de choix des engrais et amendements</span>
+      <nav class="views" aria-label="Affichage">
+        <button type="button" data-view="conseil" aria-pressed="true">Conseil</button>
+        <button type="button" data-view="methode" aria-pressed="false">Méthode et sources</button>
+      </nav>
+    </div>
+    <h1>Quel engrais, pour quelle culture, à quel stade ?</h1>
+    <form id="search" class="search" role="search">
+      <label for="q" class="sr">Votre question</label>
+      <input id="q" type="search" autocomplete="off" placeholder="Ex. : soufre colza reprise, blé épi 1 cm temps sec, équivalent ammo en bio">
+      <button type="submit">Chercher</button>
+    </form>
+    <div class="examples" id="examples"></div>
+    <div class="understood" id="understood" aria-live="polite"></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <details class="facets" id="facets">
+    <summary>Préciser ma situation</summary>
+    <div class="fbody">
+      <div class="fgroup">
+        <h2>Culture et stade</h2>
+        <select id="f-crop" aria-label="Culture"></select>
+        <select id="f-stage" aria-label="Stade"></select>
+      </div>
+      <div class="fgroup">
+        <h2>Besoin</h2>
+        <p class="hint">Laisser vide pour suivre les besoins du stade.</p>
+        <div class="seg" id="f-needs"></div>
+      </div>
+      <div class="fgroup">
+        <h2>Sol</h2>
+        <div class="opts">
+          <label><input type="radio" name="ph" value="inconnu"> pH non renseigné</label>
+          <label><input type="radio" name="ph" value="acide"> Acide (pH eau &lt; 6)</label>
+          <label><input type="radio" name="ph" value="neutre"> Neutre (6 à 7,5)</label>
+          <label><input type="radio" name="ph" value="calcaire"> Calcaire (&gt; 7,5)</label>
+          <label style="margin-top:6px"><input type="checkbox" id="f-sup"> Superficiel ou filtrant</label>
+          <label><input type="checkbox" id="f-pluv"> Hiver pluvieux (&gt; 250 mm depuis octobre)</label>
+          <label><input type="checkbox" id="f-pro"> Apports organiques réguliers (au moins 1 an sur 3)</label>
+        </div>
+      </div>
+      <div class="fgroup">
+        <h2>Météo des 15 prochains jours</h2>
+        <div class="opts">
+          <label><input type="radio" name="meteo" value="normale"> Sans particularité</label>
+          <label><input type="radio" name="meteo" value="sec"> Sèche et chaude</label>
+          <label><input type="radio" name="meteo" value="pluie"> Pluie d'au moins 15 mm annoncée</label>
+        </div>
+      </div>
+      <div class="fgroup">
+        <h2>Mode de production</h2>
+        <div class="opts">
+          <label><input type="radio" name="mode" value="conv"> Conventionnel</label>
+          <label><input type="radio" name="mode" value="ab"> Agriculture biologique</label>
+        </div>
+      </div>
+      <div class="fgroup">
+        <h2>Ce qui compte le plus</h2>
+        <div class="opts">
+          <label><input type="radio" name="prio" value="equilibre"> Le meilleur compromis</label>
+          <label><input type="radio" name="prio" value="cout"> Le coût par unité</label>
+          <label><input type="radio" name="prio" value="rapidite"> La rapidité d'action</label>
+          <label><input type="radio" name="prio" value="sol"> La fertilité du sol à long terme</label>
+        </div>
+      </div>
+      <div class="fgroup">
+        <h2>Matériel disponible</h2>
+        <div class="opts" id="f-equip"></div>
+      </div>
+      <div class="fgroup">
+        <h2>Effluents sur l'exploitation</h2>
+        <div class="opts" id="f-own"></div>
+        <button type="button" class="reset" id="f-reset">Effacer la recherche</button>
+      </div>
+    </div>
+  </details>
+  <section class="results" id="results" aria-live="polite"></section>
+</main>
+
+<template id="tpl-method">
+  <article class="panel method">
+    <h2>Comment le moteur choisit</h2>
+    <p>Le moteur suit la logique des « 4 bons » de la fertilisation raisonnée : la bonne source, la bonne dose, au bon moment, au bon endroit. Il ne remplace pas le calcul de dose ; il aide à choisir le produit et sa mise en œuvre.</p>
+    <ol>
+      <li><strong>Comprendre la question.</strong> Les mots tapés sont rapprochés des cultures, des stades, des besoins, des symptômes, du contexte (sol, météo, bio) et des noms de produits, synonymes compris : « ammo », « Super 18 », « perlurée », « Patentkali »…</li>
+      <li><strong>Établir les besoins du stade.</strong> Pour chaque culture et chaque stade, les besoins sont notés prioritaires, selon situation ou inutiles, avec les repères des instituts. Le sol et l'hiver modulent ces niveaux : un sol superficiel après un hiver pluvieux rend le soufre prioritaire sur céréales.</li>
+      <li><strong>Écarter l'inadapté.</strong> Produits interdits en bio, matériel absent, chaulage sur culture en place, produit foliaire avant semis, chlore à l'approche de la plantation des pommes de terre, phosphate naturel en sol calcaire. Les produits écartés restent visibles, avec la raison.</li>
+      <li><strong>Classer.</strong> Couverture des besoins prioritaires, vitesse d'action par rapport au stade, risque de volatilisation selon le sol et la météo annoncée, effet sur le pH, coût relatif, effluents disponibles sur la ferme et priorité choisie.</li>
+      <li><strong>Expliquer.</strong> Chaque proposition affiche ses raisons, ses points de vigilance et, si un objectif est saisi, la quantité de produit à apporter et ce qu'elle apporte en plus.</li>
+    </ol>
+    <h3>Ce que le moteur ne fait pas</h3>
+    <ul>
+      <li>Il ne calcule pas les doses d'azote, de phosphore et de potasse : elles relèvent de la méthode du bilan et de l'analyse de terre (grille COMIFER).</li>
+      <li>Les compositions sont des valeurs typiques : l'étiquette ou l'analyse du lot font foi, surtout pour les effluents.</li>
+      <li>Le calendrier d'épandage et les plafonds de la directive nitrates dépendent du programme d'actions de chaque zone.</li>
+      <li>Les prix ne sont pas intégrés : le coût est une classe relative (bas, moyen, élevé) par unité fertilisante.</li>
+    </ul>
+    <h3>Références mobilisées</h3>
+    <ul>
+      <li>COMIFER : classes d'exigence des cultures en phosphore et potassium, raisonnement de la fumure P-K. <a href="https://comifer.asso.fr/wp-content/uploads/2015/03/Fertilisation-phosphatee-et-potassique.pdf" target="_blank" rel="noopener">Document COMIFER</a></li>
+      <li>Arvalis : fertilisation soufrée des céréales (grille de risque, 20 à 50 kg SO3/ha entre tallage et épi 1 cm). <a href="https://www.arvalis.fr/infos-techniques/fertilisation-des-cereales-dans-quelles-situations-un-apport-de-soufre-est-il" target="_blank" rel="noopener">Article</a></li>
+      <li>Arvalis : formes d'azote et volatilisation ammoniacale. <a href="https://www.arvalis.fr/infos-techniques/oui-lammonitrate-est-la-forme-la-plus-efficace" target="_blank" rel="noopener">Article</a> ; pluie nécessaire après un apport (15 à 20 mm sous 15 jours). <a href="https://www.arvalis.fr/infos-techniques/fertilisation-des-cereales-quel-role-joue-la-pluie-apres-un-apport-dazote-en" target="_blank" rel="noopener">Article</a> ; azote du maïs. <a href="https://www.arvalis.fr/infos-techniques/fractionner-les-apports-dazote-tout-en-limitant-les-pertes-par-volatilisation" target="_blank" rel="noopener">Article</a></li>
+      <li>Arvalis : chaulage et sensibilité des cultures à l'acidité. <a href="https://www.arvalis.fr/infos-techniques/le-chaulage-depend-du-besoin-de-corriger-plus-ou-moins-rapidement-le-ph-acide-dune" target="_blank" rel="noopener">Article</a></li>
+      <li>Terres Inovia : soufre sur colza (75 kg SO3/ha sous forme sulfate, 50 avec apports organiques réguliers). <a href="https://www.terresinovia.fr/fr/actualites/champagne-ardenneseine-et-marne-colza-adapter-la-fertilisation-azotee-et-soufree-lannee" target="_blank" rel="noopener">Article</a> ; bore du tournesol. <a href="https://www.terresinovia.fr/fr/informations-techniques/tournesol/fertilisation-du-tournesol-carence-en-bore-intervenir" target="_blank" rel="noopener">Article</a></li>
+      <li>ITB : pH optimal de la betterave entre 7 et 7,5. <a href="https://www.reussir.fr/grandes-cultures/chaulage-pas-dimpasse-pour-la-betterave-sensible-lacidification-des-sols" target="_blank" rel="noopener">Article</a></li>
+      <li>Règlement (UE) 2021/1165, annexe II : intrants utilisables en agriculture biologique.</li>
+      <li>Compositions et synonymes : référentiel des engrais et amendements (59 produits).</li>
+    </ul>
+  </article>
+</template>
+<noscript><p class="panel" style="margin:20px">Ce moteur a besoin de JavaScript pour fonctionner.</p></noscript>
+</body>
+</html>
