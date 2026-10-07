@@ -1,0 +1,8 @@
+# Prettier ne formate que le SCSS et le JS (voir les scripts format dans package.json).
+node_modules/
+public/assets/css/
+public/data/
+*.md
+*.json
+*.html
+*.yml

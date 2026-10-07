@@ -20,13 +20,17 @@
         var s = document.createElement('script');
         s.src = base + src;
         s.async = false;
-        s.onerror = function () { fail('Un fichier du site n’a pas pu être chargé (' + src + '). Rechargez la page.'); };
+        s.onerror = function () {
+          fail('Un fichier du site n’a pas pu être chargé (' + src + '). Rechargez la page.');
+        };
         document.body.appendChild(s);
       });
     })
     .catch(function (e) {
-      fail(location.protocol === 'file:'
-        ? 'Ce site doit être servi par un serveur web. Depuis le dossier du projet : <code>npm run dev</code> ou <code>python3 -m http.server -d public 8080</code>.'
-        : 'Impossible de charger les données des produits (' + e.message + '). Rechargez la page.');
+      fail(
+        location.protocol === 'file:'
+          ? 'Ce site doit être servi par un serveur web. Depuis le dossier du projet : <code>npm run dev</code> ou <code>python3 -m http.server -d public 8080</code>.'
+          : 'Impossible de charger les données des produits (' + e.message + '). Rechargez la page.',
+      );
     });
 })();

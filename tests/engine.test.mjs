@@ -6,12 +6,14 @@ import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 
 const root = new URL('../public/', import.meta.url);
-const read = (p) => readFileSync(new URL(p, root), 'utf8');
+const read = p => readFileSync(new URL(p, root), 'utf8');
 
 const context = vm.createContext({ PRODUCTS: JSON.parse(read('data/products.json')) });
 const api = vm.runInContext(
-  read('assets/js/rules.js') + '\n' + read('assets/js/engine.js') +
-  '\n;({ parse, ctxFromParse, defaultCtx, rankAll, equivalents, PBYID, CROPS, EL, EQUIP, OWN, PRODUCTS })',
+  read('assets/js/rules.js') +
+    '\n' +
+    read('assets/js/engine.js') +
+    '\n;({ parse, ctxFromParse, defaultCtx, rankAll, equivalents, PBYID, CROPS, EL, EQUIP, OWN, PRODUCTS })',
   context,
 );
 
@@ -19,7 +21,7 @@ const search = (q, base) => {
   const ctx = api.ctxFromParse(api.parse(q), Object.assign(api.defaultCtx(), base || {}));
   return { ctx, r: api.rankAll(ctx) };
 };
-const ids = (list) => list.map((x) => x.p.id);
+const ids = list => list.map(x => x.p.id);
 
 /* ---------- Intégrité des données ---------- */
 
@@ -47,7 +49,8 @@ test('les règles ne citent que des éléments et produits existants', () => {
       stageIds.add(st.id);
       assert.ok(['fond', 'semis', 'veg', 'tardif'].includes(st.phase), `${c.id}/${st.id} : phase invalide`);
       for (const n of st.needs) assert.ok(api.EL[n.el], `${c.id}/${st.id} : élément inconnu ${n.el}`);
-      for (const pid of Object.keys(st.prefer || {})) assert.ok(api.PBYID[pid], `${c.id}/${st.id} : produit inconnu ${pid}`);
+      for (const pid of Object.keys(st.prefer || {}))
+        assert.ok(api.PBYID[pid], `${c.id}/${st.id} : produit inconnu ${pid}`);
     }
   }
 });
@@ -55,7 +58,14 @@ test('les règles ne citent que des éléments et produits existants', () => {
 /* ---------- Compréhension de la requête ---------- */
 
 test('les synonymes de terrain retrouvent le bon produit', () => {
-  const cases = { 'super 18': 'ssp', 'ammo': 'amm33', 'perlurée': 'uree', 'patentkali': 'patentkali', 'solution 39': 'sol39', 'chlorure de potasse': 'kcl' };
+  const cases = {
+    'super 18': 'ssp',
+    ammo: 'amm33',
+    perlurée: 'uree',
+    patentkali: 'patentkali',
+    'solution 39': 'sol39',
+    'chlorure de potasse': 'kcl',
+  };
   for (const [q, id] of Object.entries(cases)) assert.equal(api.parse(q).products[0], id, q);
 });
 
@@ -73,20 +83,20 @@ test('culture, stade, besoin et contexte sont reconnus dans une phrase', () => {
 test('colza à la reprise : un engrais soufré sous forme sulfate arrive en tête', () => {
   const { r } = search('soufre colza reprise');
   assert.ok(['asn', 'sa'].includes(r.ok[0].p.id), `en tête : ${r.ok[0].p.id}`);
-  const sa = r.ok.find((x) => x.p.id === 'sa');
+  const sa = r.ok.find(x => x.p.id === 'sa');
   assert.equal(Math.round(sa.dose.qty), 125, '75 kg SO3/ha avec du sulfate d’ammoniaque à 60 %');
 });
 
 test('légumineuse : pas d’azote, avec un avertissement', () => {
   const { r } = search('azote pois');
-  assert.ok(r.warns.some((w) => w.kind === 'stop'));
-  assert.ok(!r.T.some((t) => t.el === 'N'));
+  assert.ok(r.warns.some(w => w.kind === 'stop'));
+  assert.ok(!r.T.some(t => t.el === 'N'));
 });
 
 test('agriculture biologique : les engrais de synthèse sont écartés', () => {
   const { r } = search('blé tallage bio');
   assert.ok(!ids(r.ok).includes('amm33'));
-  assert.ok(r.out.find((x) => x.p.id === 'amm33').excl.some((e) => /biologique/.test(e)));
+  assert.ok(r.out.find(x => x.p.id === 'amm33').excl.some(e => /biologique/.test(e)));
 });
 
 test('sol calcaire : le phosphate naturel est écarté pour le phosphore', () => {
@@ -103,12 +113,12 @@ test('pomme de terre : la potasse sans chlore passe devant le chlorure', () => {
 
 test('culture en place : pas d’amendement basique proposé', () => {
   const { r } = search('blé épi 1 cm');
-  assert.ok(!r.ok.some((x) => x.p.prov.pH && x.p.id !== 'cyan'));
+  assert.ok(!r.ok.some(x => x.p.prov.pH && x.p.id !== 'cyan'));
 });
 
 test('équivalents en bio d’un engrais azoté minéral : uniquement des produits autorisés', () => {
   const ctx = Object.assign(api.defaultCtx(), { ab: true });
   const eq = api.equivalents(api.PBYID.amm33, ctx);
   assert.ok(eq.length > 0);
-  assert.ok(eq.every((e) => e.q.ab !== 'non'));
+  assert.ok(eq.every(e => e.q.ab !== 'non'));
 });
