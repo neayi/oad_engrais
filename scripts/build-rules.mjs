@@ -92,6 +92,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const rules = loadRules();
   const productRules = loadRules(new URL('regles/produits/', root));
   checkRules({ ...rules, ...productRules });
+  mkdirSync(new URL('public/data/', root), { recursive: true });
   writeFileSync(new URL('public/data/regles.json', root), JSON.stringify(rules));
   const products = productsFromRules(productRules);
   writeFileSync(new URL('public/data/products.json', root), JSON.stringify(products));
