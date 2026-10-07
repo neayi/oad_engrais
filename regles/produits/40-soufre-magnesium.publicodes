@@ -1,0 +1,90 @@
+# Engrais soufrés et magnésiens
+
+produit . kieserite:
+  titre: Kiesérite
+  catégorie: Engrais S / Mg
+  autres noms: Sulfate de magnésium monohydraté ; kiesérite granulée ; ESTA Kieserit (marque K+S)
+  noms étrangers: "EN : kieserite, magnesium sulphate monohydrate ; ES : kieserita ; DE : Kieserit"
+  formule chimique: MgSO4·H2O
+  teneurs:
+    SO3: 50
+    MgO: 25
+  forme: Soluble eau
+  effet sur le pH: Neutre
+  agriculture biologique: Oui (origine naturelle)
+  statut AB: cond
+  à savoir: Source de Mg et S rapidement disponibles.
+  termes de recherche: [esta kieserit, kieserit, kieserita, kieserite, kieserite granulee, magnesium sulphate monohydrate, sulfate de magnesium monohydrate]
+  vitesse: 3
+  matériel: [centrifuge]
+  coût: 2
+  apports:
+    Mg: 2
+    S: 2
+
+produit . epsom:
+  titre: Sel d'Epsom
+  catégorie: Engrais S / Mg
+  autres noms: Sulfate de magnésium heptahydraté ; sulfate de magnésie ; epsomite
+  noms étrangers: "EN : Epsom salt, magnesium sulphate heptahydrate ; ES : sal de Epsom, sulfato de magnesio ; DE : Bittersalz"
+  formule chimique: MgSO4·7H2O
+  teneurs:
+    SO3: 32
+    MgO: 16
+  forme: Très soluble
+  effet sur le pH: Neutre
+  agriculture biologique: Oui si origine naturelle
+  statut AB: cond
+  à savoir: Surtout en pulvérisation foliaire pour corriger rapidement une carence en Mg.
+  termes de recherche: [bittersalz, epsom salt, epsomite, magnesium sulphate heptahydrate, sal de epsom, sel d epsom, sulfate de magnesie, sulfate de magnesium heptahydrate, sulfato de magnesio]
+  vitesse: 3
+  matériel: [pulve]
+  coût: 3
+  apports:
+    Mg: 2
+    S: 1
+  foliaire: oui
+  foliaire seulement: oui
+
+produit . gypse:
+  titre: Gypse
+  catégorie: Engrais S / Mg
+  autres noms: Sulfate de calcium dihydraté ; plâtre agricole ; gypse agricole ; phosphogypse (sous-produit de l'acide phosphorique)
+  noms étrangers: "EN : gypsum, calcium sulphate ; ES : yeso agrícola ; DE : Gips"
+  formule chimique: CaSO4·2H2O
+  teneurs:
+    SO3: 46
+    CaO: 32
+  forme: Peu soluble (≈ 2,5 g/L)
+  effet sur le pH: Neutre (aucun effet chaulant)
+  agriculture biologique: Oui (naturel uniquement ; phosphogypse exclu)
+  statut AB: cond
+  à savoir: Source de S et de Ca ; améliore la structure des sols sodiques. Ne corrige pas l'acidité (VN nulle).
+  termes de recherche: [calcium sulphate, gips, gypse, gypsum, phosphogypse, platre agricole, sulfate de calcium dihydrate, yeso agricola]
+  vitesse: 2
+  matériel: [centrifuge, epandeur_amendement]
+  coût: 1
+  apports:
+    S: 2
+
+produit . soufre:
+  titre: Soufre élémentaire
+  catégorie: Engrais S / Mg
+  autres noms: Fleur de soufre ; soufre micronisé ; soufre mouillable ; soufre bentonite (≈ 90 % S + 10 % bentonite) ; « soufre 90 »
+  noms étrangers: "EN : elemental sulphur, sulphur bentonite ; ES : azufre elemental ; DE : elementarer Schwefel, Bentonit-Schwefel"
+  formule chimique: S
+  teneurs:
+    SO3: 225
+  autres éléments: S ≈ 90 %
+  forme: Insoluble ; oxydé en sulfate par les bactéries du sol (semaines à mois)
+  effet sur le pH: Très acidifiant
+  agriculture biologique: Oui
+  statut AB: oui
+  à savoir: Action lente, à anticiper. Sert aussi à acidifier un sol. 90 % S correspond à 225 % exprimé en SO3.
+  termes de recherche: [azufre elemental, bentonit-schwefel, elemental sulphur, elementarer schwefel, fleur de soufre, soufre 90, soufre bentonite, soufre elementaire, soufre micronise, soufre mouillable, sulphur bentonite]
+  vitesse: 1
+  matériel: [centrifuge]
+  coût: 1
+  apports:
+    S: 2
+  effet acidifiant: -3

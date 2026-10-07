@@ -1,5 +1,4 @@
 # Légumineuses : pois, féverole, soja, luzerne.
-# Pois, féverole et soja partagent leurs stades par des ancres YAML.
 
 # ---------- Pois protéagineux ----------
 
@@ -12,7 +11,7 @@ culture . pois:
   exigence potasse: moyenne
   sensibilité acidité: moyenne
 
-culture . pois . semis: &legumineuse_semis
+culture . pois . semis:
   titre: Avant semis – semis
   id: fond
   phase: fond
@@ -23,35 +22,35 @@ culture . pois . semis . phosphore:
   source: COMIFER
   description: "Exigence moyenne (COMIFER)."
 
-culture . pois . semis . potasse: &legumineuse_k_moyenne
+culture . pois . semis . potasse:
   valeur: 1
   source: COMIFER
   description: "Exigence moyenne (COMIFER)."
 
-culture . pois . semis . chaulage: &legumineuse_chaulage
+culture . pois . semis . chaulage:
   valeur: niveau . chaulage
   explication: explication . chaulage
   description: "La nodulation est pénalisée en sol acide : viser un pH eau d'au moins 6."
 
-culture . pois . semis . azote: &legumineuse_semis_n
+culture . pois . semis . azote:
   valeur: 0
   description: "Légumineuse : aucun apport d'azote. La fixation symbiotique couvre les besoins, et l'azote apporté réduit la nodulation."
 
-culture . pois . végétation: &legumineuse_vegetation
+culture . pois . végétation:
   titre: En végétation
   id: veg
   phase: veg
   mots-clés: [vegetation, levee, floraison, mai, juin]
 
-culture . pois . végétation . azote: &legumineuse_vegetation_n
+culture . pois . végétation . azote:
   valeur: 0
   description: "Légumineuse : aucun apport d'azote."
 
-culture . pois . végétation . manganèse: &legumineuse_vegetation_mn
+culture . pois . végétation . manganèse:
   valeur: niveau . si sol calcaire
   description: "Manganèse foliaire si carence en sol calcaire."
 
-culture . pois . végétation . phosphore: &legumineuse_vegetation_p
+culture . pois . végétation . phosphore:
   valeur: 0
   source: Arvalis
   description: "Phosphore et potasse en végétation : sans effet sur la production des grandes cultures."
@@ -67,7 +66,11 @@ culture . féverole:
   exigence potasse: moyenne (classe par défaut)
   sensibilité acidité: moyenne
 
-culture . féverole . semis: *legumineuse_semis
+culture . féverole . semis:
+  titre: Avant semis – semis
+  id: fond
+  phase: fond
+  mots-clés: [avant semis, fond, fumure de fond, semis, au semis, implantation, mars, avril, automne]
 
 culture . féverole . semis . phosphore:
   valeur: 1
@@ -79,13 +82,33 @@ culture . féverole . semis . potasse:
   source: COMIFER
   description: "Exigence moyenne (classe par défaut) (COMIFER)."
 
-culture . féverole . semis . chaulage: *legumineuse_chaulage
-culture . féverole . semis . azote: *legumineuse_semis_n
+culture . féverole . semis . chaulage:
+  valeur: niveau . chaulage
+  explication: explication . chaulage
+  description: "La nodulation est pénalisée en sol acide : viser un pH eau d'au moins 6."
 
-culture . féverole . végétation: *legumineuse_vegetation
-culture . féverole . végétation . azote: *legumineuse_vegetation_n
-culture . féverole . végétation . manganèse: *legumineuse_vegetation_mn
-culture . féverole . végétation . phosphore: *legumineuse_vegetation_p
+culture . féverole . semis . azote:
+  valeur: 0
+  description: "Légumineuse : aucun apport d'azote. La fixation symbiotique couvre les besoins, et l'azote apporté réduit la nodulation."
+
+culture . féverole . végétation:
+  titre: En végétation
+  id: veg
+  phase: veg
+  mots-clés: [vegetation, levee, floraison, mai, juin]
+
+culture . féverole . végétation . azote:
+  valeur: 0
+  description: "Légumineuse : aucun apport d'azote."
+
+culture . féverole . végétation . manganèse:
+  valeur: niveau . si sol calcaire
+  description: "Manganèse foliaire si carence en sol calcaire."
+
+culture . féverole . végétation . phosphore:
+  valeur: 0
+  source: Arvalis
+  description: "Phosphore et potasse en végétation : sans effet sur la production des grandes cultures."
 
 # ---------- Soja ----------
 
@@ -98,24 +121,49 @@ culture . soja:
   exigence potasse: moyenne
   sensibilité acidité: moyenne
 
-culture . soja . semis: *legumineuse_semis
+culture . soja . semis:
+  titre: Avant semis – semis
+  id: fond
+  phase: fond
+  mots-clés: [avant semis, fond, fumure de fond, semis, au semis, implantation, mars, avril, automne]
 
 culture . soja . semis . phosphore:
   valeur: 1
   source: COMIFER
   description: "Exigence faible (COMIFER)."
 
-culture . soja . semis . potasse: *legumineuse_k_moyenne
-culture . soja . semis . chaulage: *legumineuse_chaulage
+culture . soja . semis . potasse:
+  valeur: 1
+  source: COMIFER
+  description: "Exigence moyenne (COMIFER)."
+
+culture . soja . semis . chaulage:
+  valeur: niveau . chaulage
+  explication: explication . chaulage
+  description: "La nodulation est pénalisée en sol acide : viser un pH eau d'au moins 6."
 
 culture . soja . semis . azote:
   valeur: 0
   description: "Légumineuse : aucun apport d'azote. La fixation symbiotique couvre les besoins, et l'azote apporté réduit la nodulation. Inoculer les semences en l'absence d'historique de soja."
 
-culture . soja . végétation: *legumineuse_vegetation
-culture . soja . végétation . azote: *legumineuse_vegetation_n
-culture . soja . végétation . manganèse: *legumineuse_vegetation_mn
-culture . soja . végétation . phosphore: *legumineuse_vegetation_p
+culture . soja . végétation:
+  titre: En végétation
+  id: veg
+  phase: veg
+  mots-clés: [vegetation, levee, floraison, mai, juin]
+
+culture . soja . végétation . azote:
+  valeur: 0
+  description: "Légumineuse : aucun apport d'azote."
+
+culture . soja . végétation . manganèse:
+  valeur: niveau . si sol calcaire
+  description: "Manganèse foliaire si carence en sol calcaire."
+
+culture . soja . végétation . phosphore:
+  valeur: 0
+  source: Arvalis
+  description: "Phosphore et potasse en végétation : sans effet sur la production des grandes cultures."
 
 # ---------- Luzerne ----------
 

@@ -1,18 +1,18 @@
 // Tests du moteur : intégrité des données et comportements agronomiques attendus.
-// Lancer : npm test (Node 20 ou plus). Les règles sont lues directement dans regles/.
+// Lancer : npm test (Node 20 ou plus). Règles et produits sont lus directement dans regles/.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 import Engine from 'publicodes';
-import { loadRules, checkRules } from '../scripts/build-rules.mjs';
+import { loadRules, loadProducts, checkRules } from '../scripts/build-rules.mjs';
 
 const root = new URL('../public/', import.meta.url);
 const read = p => readFileSync(new URL(p, root), 'utf8');
 
 const RULES = loadRules();
 const context = vm.createContext({
-  PRODUCTS: JSON.parse(read('data/products.json')),
+  PRODUCTS: loadProducts(),
   RULES,
   PublicodesEngine: Engine,
   console,
@@ -46,6 +46,9 @@ test('chaque produit a un identifiant unique et des champs complets', () => {
     if (p.own) assert.ok(api.OWN[p.own], `${p.id} : effluent inconnu ${p.own}`);
     assert.ok([1, 2, 3].includes(p.speed), `${p.id} : vitesse hors 1-3`);
     assert.ok(['oui', 'non', 'cond'].includes(p.ab), `${p.id} : statut AB invalide`);
+    for (const [k, v] of Object.entries(p.c)) assert.equal(typeof v, 'number', `${p.id} : teneur ${k} non numérique`);
+    for (const [titre, url] of Object.entries(p.refs || {}))
+      assert.match(String(url), /^https?:\/\//, `${p.id} : référence « ${titre} » sans adresse http(s)`);
   }
 });
 

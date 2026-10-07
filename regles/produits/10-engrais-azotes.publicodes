@@ -1,0 +1,302 @@
+# Engrais azotés
+
+produit . amm33:
+  titre: Ammonitrate 33,5
+  catégorie: Engrais azoté
+  autres noms: Nitrate d'ammonium ; ammonitrate haut dosage ; « ammo » ; « ammo 33,5 » ; AN 33,5
+  noms étrangers: "EN : ammonium nitrate (AN) ; ES : nitrato amónico ; DE : Ammonsalpeter"
+  formule chimique: NH4NO3
+  teneurs:
+    N: 33.5
+  forme: ½ nitrique, ½ ammoniacal ; très soluble
+  effet sur le pH: Acidifiant modéré
+  agriculture biologique: Non
+  statut AB: non
+  à savoir: "Engrais azoté de référence en France. Haut dosage (> 28 % N) : norme NF U 42-001, test de détonabilité, stockage réglementé (ICPE)."
+  termes de recherche: [ammo, "ammo 33,5", "ammonitrate 33,5", ammonitrate haut dosage, ammonium nitrate, ammonsalpeter, "an 33,5", nitrate d ammonium, nitrato amonico]
+  vitesse: 3
+  matériel: [centrifuge]
+  volatilisation: 0
+  coût: 2
+  apports:
+    N: 2
+  classe nitrates: III
+  effet acidifiant: -1
+
+produit . can27:
+  titre: Ammonitrate 27 (CAN)
+  catégorie: Engrais azoté
+  autres noms: Ammonitrate moyen dosage ; nitrate d'ammonium calcaire ; « ammo 27 » ; CAN 27 ; ammonitrate dolomitique (variante à la dolomie)
+  noms étrangers: "EN : calcium ammonium nitrate (CAN) ; ES : nitrato amónico cálcico (NAC) ; DE : Kalkammonsalpeter (KAS)"
+  formule chimique: NH4NO3 + CaCO3 (ou dolomie)
+  teneurs:
+    N: 27
+    CaO: 12
+  autres éléments: Versions dolomitiques ≈ 4 % MgO
+  forme: ½ nitrique, ½ ammoniacal
+  effet sur le pH: Faiblement acidifiant (compensé en partie par le carbonate)
+  agriculture biologique: Non
+  statut AB: non
+  à savoir: Hors catégorie « haut dosage » (< 28 % N). Teneur en CaO variable selon la charge.
+  termes de recherche: [ammo 27, ammonitrate 27, ammonitrate dolomitique, ammonitrate moyen dosage, calcium ammonium nitrate, can 27, kalkammonsalpeter, kas, nac, nitrate d ammonium calcaire, nitrato amonico calcico]
+  vitesse: 3
+  matériel: [centrifuge]
+  volatilisation: 0
+  coût: 2
+  apports:
+    N: 2
+  classe nitrates: III
+  effet acidifiant: -0.5
+
+produit . uree:
+  titre: Urée 46
+  catégorie: Engrais azoté
+  autres noms: Carbamide ; « perlurée » (urée perlée) ; urée granulée ; urée protégée / stabilisée (avec inhibiteur d'uréase type NBPT)
+  noms étrangers: "EN : urea (prilled / granular) ; ES : urea ; DE : Harnstoff"
+  formule chimique: CO(NH2)2
+  teneurs:
+    N: 46
+  autres éléments: Biuret ≤ 1,2 %
+  forme: Uréique (amidique), hydrolysé en ammoniacal
+  effet sur le pH: Acidifiant modéré (après nitrification)
+  agriculture biologique: Non
+  statut AB: non
+  à savoir: Fort risque de volatilisation NH3 en surface (sol chaud, sec, calcaire ou à pH élevé). Engrais N le moins cher à l'unité.
+  termes de recherche: [carbamide, harnstoff, perluree, urea, uree 46, uree granulee, uree perlee, uree protegee stabilisee]
+  vitesse: 2
+  matériel: [centrifuge]
+  volatilisation: 2
+  coût: 1
+  apports:
+    N: 2
+  classe nitrates: III
+  effet acidifiant: -1
+  ammoniacal: oui
+
+produit . sol39:
+  titre: Solution azotée 39
+  catégorie: Engrais azoté
+  autres noms: Solution azotée ; « solution 39 » ; « 390 » ; « N liquide » ; azote liquide ; UAN 30 ; solution azotée soufrée (variante avec SO3)
+  noms étrangers: "EN : urea ammonium nitrate solution (UAN 28 / 30 / 32) ; ES : solución nitrogenada (N-32), UAN ; DE : Ammonnitrat-Harnstoff-Lösung (AHL)"
+  formule chimique: Urée + NH4NO3 en solution aqueuse
+  teneurs:
+    N: 30
+  autres éléments: Densité ≈ 1,30
+  forme: ≈ ½ uréique, ¼ nitrique, ¼ ammoniacal
+  effet sur le pH: Acidifiant modéré
+  agriculture biologique: Non
+  statut AB: non
+  à savoir: 30 % N en poids × densité 1,30 = 39 kg N/hL (390 kg N/m³), d'où le nom « 39 ». L'UAN 32 (32 % N) domine en Amérique du Nord.
+  termes de recherche: [ahl, ammonnitrat-harnstoff-losung, azote liquide, n liquide, n-32, solucion nitrogenada, solution 39, solution azotee, solution azotee 39, solution azotee soufree, uan, uan 30, urea ammonium nitrate solution]
+  vitesse: 3
+  matériel: [pulve]
+  volatilisation: 3
+  coût: 1
+  apports:
+    N: 2
+  classe nitrates: III
+  effet acidifiant: -1
+  ammoniacal: oui
+  liquide: oui
+  densité: 1.3
+
+produit . sa:
+  titre: Sulfate d'ammoniaque
+  catégorie: Engrais azoté
+  autres noms: Sulfate d'ammonium ; SA ; « sulfate d'ammo » ; sulfate 21
+  noms étrangers: "EN : ammonium sulphate (AS, AMS) ; ES : sulfato amónico ; DE : schwefelsaures Ammoniak (SSA), Ammoniumsulfat"
+  formule chimique: (NH4)2SO4
+  teneurs:
+    N: 21
+    SO3: 60
+  forme: 100 % ammoniacal ; S sous forme sulfate
+  effet sur le pH: Très acidifiant
+  agriculture biologique: Non
+  statut AB: non
+  à savoir: Souvent sous-produit industriel (caprolactame, lavage d'air). Source de S rapidement disponible (colza, céréales).
+  termes de recherche: [ammonium sulphate, ammoniumsulfat, ams, schwefelsaures ammoniak, ssa, sulfate 21, sulfate d ammo, sulfate d ammoniaque, sulfate d ammonium, sulfato amonico]
+  vitesse: 3
+  matériel: [centrifuge]
+  volatilisation: 1
+  coût: 2
+  apports:
+    N: 1
+    S: 2
+  classe nitrates: III
+  effet acidifiant: -2
+  ammoniacal: oui
+
+produit . asn:
+  titre: Sulfonitrate d'ammonium (ASN)
+  catégorie: Engrais azoté
+  autres noms: Sulfonitrate ; ASN ; nitrate-sulfate d'ammonium
+  noms étrangers: "EN : ammonium sulphate nitrate (ASN) ; ES : nitrosulfato amónico ; DE : Ammonsulfatsalpeter (ASS)"
+  formule chimique: NH4NO3·2(NH4)2SO4
+  teneurs:
+    N: 26
+    SO3: 32.5
+  forme: ≈ ¼ nitrique, ¾ ammoniacal ; S sulfate
+  effet sur le pH: Acidifiant
+  agriculture biologique: Non
+  statut AB: non
+  à savoir: Apport N + S en un seul passage.
+  termes de recherche: [ammonium sulphate nitrate, ammonsulfatsalpeter, asn, nitrate-sulfate d ammonium, nitrosulfato amonico, sulfonitrate, sulfonitrate d ammonium]
+  vitesse: 3
+  matériel: [centrifuge]
+  volatilisation: 0.5
+  coût: 2
+  apports:
+    N: 2
+    S: 2
+  classe nitrates: III
+  effet acidifiant: -1.5
+
+produit . ats:
+  titre: Thiosulfate d'ammonium (ATS)
+  catégorie: Engrais azoté
+  autres noms: Thiosulfate d'ammoniaque ; ATS ; « 12-0-0-26S »
+  noms étrangers: "EN : ammonium thiosulfate (ATS) ; ES : tiosulfato amónico ; DE : Ammoniumthiosulfat (ATS)"
+  formule chimique: (NH4)2S2O3 en solution
+  teneurs:
+    N: 12
+    SO3: 65
+  autres éléments: Liquide ; S ≈ 26 %
+  forme: Ammoniacal ; S thiosulfate, oxydé en sulfate en 1 à 2 semaines
+  effet sur le pH: Acidifiant
+  agriculture biologique: Non
+  statut AB: non
+  à savoir: Souvent mélangé à la solution azotée. Effet inhibiteur partiel de l'uréase et de la nitrification rapporté.
+  termes de recherche: [12-0-0-26s, ammonium thiosulfate, ammoniumthiosulfat, ats, thiosulfate d ammoniaque, thiosulfate d ammonium, tiosulfato amonico]
+  vitesse: 2
+  matériel: [pulve]
+  volatilisation: 1
+  coût: 2
+  apports:
+    N: 1
+    S: 2
+  classe nitrates: III
+  effet acidifiant: -1.5
+  liquide: oui
+
+produit . nca:
+  titre: Nitrate de calcium
+  catégorie: Engrais azoté
+  autres noms: Nitrate de chaux ; nitrate de calcium 15,5 ; CN
+  noms étrangers: "EN : calcium nitrate (CN) ; ES : nitrato cálcico ; DE : Kalksalpeter"
+  formule chimique: 5Ca(NO3)2·NH4NO3·10H2O
+  teneurs:
+    N: 15.5
+    CaO: 26.5
+  forme: ≈ 93 % nitrique (14,4 % N-NO3 + 1,1 % N-NH4)
+  effet sur le pH: Légèrement alcalinisant
+  agriculture biologique: Non
+  statut AB: non
+  à savoir: Action très rapide. Maraîchage, arboriculture, fertirrigation, correction de carences en Ca.
+  termes de recherche: [calcium nitrate, kalksalpeter, nitrate de calcium, "nitrate de calcium 15,5", nitrate de chaux, nitrato calcico]
+  vitesse: 3
+  matériel: [centrifuge]
+  volatilisation: 0
+  coût: 3
+  apports:
+    N: 2
+  classe nitrates: III
+  effet acidifiant: 0.5
+
+produit . nna:
+  titre: Nitrate de sodium
+  catégorie: Engrais azoté
+  autres noms: Nitrate du Chili ; salpêtre du Chili ; nitrate de soude
+  noms étrangers: "EN : sodium nitrate, Chilean nitrate ; ES : nitrato sódico, nitrato de Chile ; DE : Natronsalpeter, Chilesalpeter"
+  formule chimique: NaNO3
+  teneurs:
+    N: 16
+  autres éléments: Na2O ≈ 35 %
+  forme: 100 % nitrique
+  effet sur le pH: Alcalinisant
+  agriculture biologique: Non
+  statut AB: non
+  à savoir: Historique, devenu marginal en Europe. Le sodium peut être valorisé sur betterave.
+  termes de recherche: [chilean nitrate, chilesalpeter, natronsalpeter, nitrate de sodium, nitrate de soude, nitrate du chili, nitrato de chile, nitrato sodico, salpetre du chili, sodium nitrate]
+  vitesse: 3
+  matériel: [centrifuge]
+  volatilisation: 0
+  coût: 3
+  apports:
+    N: 2
+  classe nitrates: III
+  effet acidifiant: 1
+
+produit . nh3:
+  titre: Ammoniac anhydre
+  catégorie: Engrais azoté
+  autres noms: Ammoniac ; NH3 anhydre ; « AA » ; gaz ammoniac
+  noms étrangers: "EN : anhydrous ammonia ; ES : amoníaco anhidro ; DE : wasserfreies Ammoniak"
+  formule chimique: NH3
+  teneurs:
+    N: 82
+  autres éléments: Gaz liquéfié sous pression
+  forme: Ammoniacal
+  effet sur le pH: Acidifiant
+  agriculture biologique: Non
+  statut AB: non
+  à savoir: Engrais azoté le plus concentré, injecté dans le sol. Très répandu en Amérique du Nord, quasi absent en France (sécurité).
+  termes de recherche: [ammoniac anhydre, amoniaco anhidro, anhydrous ammonia, gaz ammoniac, nh3 anhydre, wasserfreies ammoniak]
+  vitesse: 2
+  matériel: [injecteur]
+  volatilisation: 0
+  coût: 1
+  apports:
+    N: 2
+  classe nitrates: III
+  effet acidifiant: -1
+
+produit . cyan:
+  titre: Cyanamide calcique
+  catégorie: Engrais azoté
+  autres noms: Chaux azotée ; cyanamide de calcium ; Perlka (marque)
+  noms étrangers: "EN : calcium cyanamide ; ES : cianamida cálcica ; DE : Kalkstickstoff"
+  formule chimique: CaCN2 + chaux
+  teneurs:
+    N: 19.8
+    CaO: 50
+  forme: Cyanamide transformée lentement en urée puis ammoniacal
+  effet sur le pH: Alcalinisant
+  agriculture biologique: Non
+  statut AB: non
+  à savoir: "Effet assainissant pendant sa transformation (graines d'adventices, limaces). Phytotoxique : respecter un délai avant semis. Manipulation délicate."
+  termes de recherche: [calcium cyanamide, chaux azotee, cianamida calcica, cyanamide calcique, cyanamide de calcium, kalkstickstoff, perlka]
+  vitesse: 1
+  matériel: [centrifuge]
+  volatilisation: 0
+  coût: 3
+  apports:
+    N: 1
+    pH: 1
+  classe nitrates: III
+  effet acidifiant: 1
+
+produit . kno3:
+  titre: Nitrate de potassium
+  catégorie: Engrais azoté
+  autres noms: Nitrate de potasse ; salpêtre ; nitre ; NOP ; « 13-0-46 »
+  noms étrangers: "EN : potassium nitrate (NOP) ; ES : nitrato potásico ; DE : Kalisalpeter"
+  formule chimique: KNO3
+  teneurs:
+    N: 13
+    K2O: 46
+  autres éléments: Sans chlore
+  forme: 100 % nitrique ; K soluble
+  effet sur le pH: Neutre à légèrement alcalinisant
+  agriculture biologique: Non
+  statut AB: non
+  à savoir: Engrais NK. Fertirrigation, maraîchage, pulvérisation foliaire.
+  termes de recherche: [kalisalpeter, nitrate de potasse, nitrate de potassium, nitrato potasico, nitre, nop, potassium nitrate, salpetre]
+  vitesse: 3
+  matériel: [pulve]
+  volatilisation: 0
+  coût: 3
+  apports:
+    N: 1
+    K: 2
+  classe nitrates: III
+  foliaire: oui

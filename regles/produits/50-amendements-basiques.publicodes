@@ -1,0 +1,186 @@
+# Amendements minéraux basiques
+
+produit . calcaire:
+  titre: Calcaire broyé
+  catégorie: Amendement minéral basique
+  autres noms: Carbonate de calcium ; « calcaire » ; « carbonate » ; calcaire broyé sec ou humide ; craie broyée ; amendement calcaire
+  noms étrangers: "EN : ground limestone, agricultural lime (aglime), calcium carbonate ; ES : caliza molida, carbonato cálcico ; DE : kohlensaurer Kalk"
+  formule chimique: CaCO3
+  teneurs:
+    CaO: 52
+    VN: 52
+  forme: Insoluble eau ; vitesse d'action liée à la finesse et à la solubilité carbonique
+  effet sur le pH: Alcalinisant (chaulage)
+  agriculture biologique: Oui
+  statut AB: oui
+  à savoir: Chaulage de redressement ou d'entretien. Comparer les produits sur le coût par unité de VN, la finesse et la solubilité carbonique.
+  termes de recherche: [aglime, agricultural lime, amendement calcaire, calcaire broye, calcaire broye sec ou humide, calcium carbonate, caliza molida, carbonate de calcium, carbonato calcico, craie broyee, ground limestone, kohlensaurer kalk]
+  vitesse: 1
+  matériel: [epandeur_amendement]
+  coût: 1
+  apports:
+    pH: 2
+
+produit . dolomie:
+  titre: Dolomie
+  catégorie: Amendement minéral basique
+  autres noms: Calcaire magnésien ; carbonate de calcium et de magnésium ; dolomie broyée ; amendement calco-magnésien
+  noms étrangers: "EN : dolomitic limestone, dolomite ; ES : dolomita ; DE : kohlensaurer Magnesiumkalk, Dolomit"
+  formule chimique: CaCO3·MgCO3
+  teneurs:
+    MgO: 18
+    CaO: 30
+    VN: 55
+  forme: Insoluble ; dissolution plus lente que le calcaire
+  effet sur le pH: Alcalinisant
+  agriculture biologique: Oui
+  statut AB: oui
+  à savoir: Chaulage avec apport de magnésium, en sol acide pauvre en Mg.
+  termes de recherche: [amendement calco-magnesien, calcaire magnesien, carbonate de calcium et de magnesium, dolomie, dolomie broyee, dolomit, dolomita, dolomite, dolomitic limestone, kohlensaurer magnesiumkalk]
+  vitesse: 1
+  matériel: [epandeur_amendement]
+  coût: 1
+  apports:
+    pH: 2
+    Mg: 2
+
+produit . lithothamne:
+  titre: Lithothamne
+  catégorie: Amendement minéral basique
+  autres noms: Maërl ; algues calcaires ; amendement marin
+  noms étrangers: "EN : calcified seaweed, maerl, Lithothamnium ; ES : maërl, algas calcáreas, litotamnio ; DE : Algenkalk"
+  formule chimique: CaCO3 + MgCO3 (algues calcifiées)
+  teneurs:
+    MgO: 3
+    CaO: 45
+    VN: 48
+  autres éléments: Oligo-éléments
+  forme: "Structure poreuse : solubilisation rapide pour un carbonate"
+  effet sur le pH: Alcalinisant
+  agriculture biologique: Oui
+  statut AB: oui
+  à savoir: Extraction du maërl breton arrêtée (2013) ; produits actuels surtout importés (Islande). Coût élevé par unité de VN.
+  termes de recherche: [algas calcareas, algenkalk, algues calcaires, amendement marin, calcified seaweed, lithothamne, lithothamnium, litotamnio, maerl]
+  vitesse: 2
+  matériel: [epandeur_amendement, centrifuge]
+  coût: 3
+  apports:
+    pH: 2
+    Mg: 1
+
+produit . chauxvive:
+  titre: Chaux vive
+  catégorie: Amendement minéral basique
+  autres noms: Oxyde de calcium ; chaux vive calcique ; « chaux » ; chaux agricole vive
+  noms étrangers: "EN : quicklime, burnt lime, calcium oxide ; ES : cal viva ; DE : Branntkalk"
+  formule chimique: CaO
+  teneurs:
+    CaO: 90
+    VN: 90
+  forme: "Réagit avec l'eau (exothermique) : action très rapide"
+  effet sur le pH: Fortement alcalinisant
+  agriculture biologique: Non
+  statut AB: non
+  à savoir: Produit le plus concentré et le plus rapide ; caustique (EPI). Sert aussi à l'hygiénisation des boues.
+  termes de recherche: [branntkalk, burnt lime, cal viva, calcium oxide, chaux agricole vive, chaux vive, chaux vive calcique, oxyde de calcium, quicklime]
+  vitesse: 3
+  matériel: [epandeur_amendement]
+  coût: 2
+  apports:
+    pH: 2
+
+produit . chauxvivemg:
+  titre: Chaux vive magnésienne
+  catégorie: Amendement minéral basique
+  autres noms: Chaux magnésienne ; chaux dolomitique vive
+  noms étrangers: "EN : dolomitic quicklime ; ES : cal viva dolomítica ; DE : Magnesium-Branntkalk"
+  formule chimique: CaO·MgO
+  teneurs:
+    MgO: 35
+    CaO: 55
+    VN: 103
+  forme: Très réactive
+  effet sur le pH: Fortement alcalinisant
+  agriculture biologique: Non
+  statut AB: non
+  à savoir: VN supérieure à 100 grâce au MgO (1 kg MgO ≈ 1,39 kg CaO en pouvoir neutralisant).
+  termes de recherche: [cal viva dolomitica, chaux dolomitique vive, chaux magnesienne, chaux vive magnesienne, dolomitic quicklime, magnesium-branntkalk]
+  vitesse: 3
+  matériel: [epandeur_amendement]
+  coût: 2
+  apports:
+    pH: 2
+    Mg: 2
+
+produit . chauxeteinte:
+  titre: Chaux éteinte
+  catégorie: Amendement minéral basique
+  autres noms: Hydroxyde de calcium ; chaux hydratée ; chaux aérienne
+  noms étrangers: "EN : hydrated lime, slaked lime ; ES : cal apagada, cal hidratada ; DE : Löschkalk"
+  formule chimique: Ca(OH)2
+  teneurs:
+    CaO: 70
+    VN: 70
+  forme: Action rapide ; poudre fine
+  effet sur le pH: Fortement alcalinisant
+  agriculture biologique: Non
+  statut AB: non
+  à savoir: Usage agricole limité (poudre volatile, coût).
+  termes de recherche: [cal apagada, cal hidratada, chaux aerienne, chaux eteinte, chaux hydratee, hydrated lime, hydroxyde de calcium, loschkalk, slaked lime]
+  vitesse: 3
+  matériel: [epandeur_amendement]
+  coût: 3
+  apports:
+    pH: 2
+
+produit . ecumes:
+  titre: Écumes de sucrerie
+  catégorie: Amendement minéral basique
+  autres noms: Écumes ; chaux de sucrerie ; « carbonatation » ; écumes de défécation ; écumes déshydratées
+  noms étrangers: "EN : sugar factory lime (SFL), lime cake ; ES : espumas de azucarera ; DE : Carbokalk"
+  formule chimique: CaCO3 + matière organique
+  teneurs:
+    N: 0.4
+    P2O5: 0.8
+    MgO: 0.8
+    CaO: 28
+    VN: 28
+  autres éléments: Matière organique, oligo-éléments
+  forme: "Calcaire très fin : action assez rapide"
+  effet sur le pH: Alcalinisant
+  agriculture biologique: Oui (chaux industrielle de sucrerie)
+  statut AB: cond
+  à savoir: Valeurs sur produit brut (≈ 70 % MS) ; les versions déshydratées sont plus concentrées. Disponibles en zones betteravières.
+  termes de recherche: [carbokalk, carbonatation, chaux de sucrerie, ecumes, ecumes de defecation, ecumes de sucrerie, ecumes deshydratees, espumas de azucarera, lime cake, sfl, sugar factory lime]
+  vitesse: 2
+  matériel: [epandeur_amendement, epandeur_fumier]
+  coût: 1
+  apports:
+    pH: 2
+    MO: 1
+
+produit . cendres:
+  titre: Cendres de bois
+  catégorie: Amendement minéral basique
+  autres noms: Cendres végétales ; cendres de chaufferie bois ; cendres de biomasse
+  noms étrangers: "EN : wood ash ; ES : cenizas de madera ; DE : Holzasche"
+  formule chimique: Oxydes et carbonates de Ca, K, Mg
+  teneurs:
+    P2O5: 1.5
+    K2O: 5
+    MgO: 3
+    CaO: 35
+    VN: 35
+  autres éléments: Oligo-éléments ; métaux selon le combustible
+  forme: K rapidement disponible ; Ca partiellement soluble
+  effet sur le pH: Alcalinisant
+  agriculture biologique: Oui (bois non traité chimiquement après abattage)
+  statut AB: cond
+  à savoir: "Composition très variable (essences, température, cendres sous foyer ou volantes) : analyse indispensable, plan d'épandage pour les cendres de chaufferie."
+  termes de recherche: [cendres de biomasse, cendres de bois, cendres de chaufferie bois, cendres vegetales, cenizas de madera, holzasche, wood ash]
+  vitesse: 2
+  matériel: [epandeur_amendement, epandeur_fumier]
+  coût: 1
+  apports:
+    pH: 1
+    K: 1

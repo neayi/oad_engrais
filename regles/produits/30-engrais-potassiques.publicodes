@@ -1,0 +1,149 @@
+# Engrais potassiques
+
+produit . kcl:
+  titre: Chlorure de potassium
+  catégorie: Engrais potassique
+  autres noms: KCl ; « potasse » ; « potasse 60 » ; chlorure de potasse ; « 60 % » ; sylvinite (minerai d'origine)
+  noms étrangers: "EN : muriate of potash (MOP), potassium chloride ; ES : cloruro potásico ; DE : Kaliumchlorid, 60er Kali"
+  formule chimique: KCl
+  teneurs:
+    K2O: 60
+  autres éléments: Cl ≈ 47 %
+  forme: K soluble eau
+  effet sur le pH: Neutre
+  agriculture biologique: Non
+  statut AB: non
+  à savoir: Potassique le plus courant et le moins cher. À éviter sur cultures sensibles au chlore (pomme de terre, tabac, vigne, fruitiers, certains légumes).
+  termes de recherche: [60er kali, chlorure de potasse, chlorure de potassium, cloruro potasico, kaliumchlorid, kcl, mop, muriate of potash, potasse 60, potassium chloride, sylvinite]
+  vitesse: 3
+  matériel: [centrifuge]
+  coût: 1
+  apports:
+    K: 2
+  chlore: oui
+
+produit . sop:
+  titre: Sulfate de potassium
+  catégorie: Engrais potassique
+  autres noms: Sulfate de potasse ; SOP ; « potasse 50 »
+  noms étrangers: "EN : sulphate of potash (SOP), potassium sulphate ; ES : sulfato potásico ; DE : Kaliumsulfat, Kalisulfat"
+  formule chimique: K2SO4
+  teneurs:
+    K2O: 50
+    SO3: 45
+  autres éléments: Cl < 3 %
+  forme: K et S solubles eau
+  effet sur le pH: Neutre
+  agriculture biologique: Oui si extrait de sel brut par procédé physique (non si procédé Mannheim)
+  statut AB: cond
+  à savoir: Pour cultures sensibles au chlore ; apporte aussi du soufre. Plus cher que le KCl.
+  termes de recherche: [kalisulfat, kaliumsulfat, potasse 50, potassium sulphate, sop, sulfate de potasse, sulfate de potassium, sulfato potasico, sulphate of potash]
+  vitesse: 3
+  matériel: [centrifuge]
+  coût: 3
+  apports:
+    K: 2
+    S: 1
+
+produit . kainite:
+  titre: Kaïnite magnésienne
+  catégorie: Engrais potassique
+  autres noms: Kaïnite ; sel brut de potasse ; Magnesia-Kainit (marque K+S)
+  noms étrangers: "EN : kainite, crude potassium salt ; ES : kainita ; DE : Kainit, Magnesia-Kainit"
+  formule chimique: KCl·MgSO4·3H2O + NaCl
+  teneurs:
+    K2O: 11
+    SO3: 10
+    MgO: 5
+  autres éléments: Na2O ≈ 20 % ; chlore élevé
+  forme: Soluble eau
+  effet sur le pH: Neutre
+  agriculture biologique: Oui
+  statut AB: oui
+  à savoir: Intéressant pour les prairies et la betterave (sodium).
+  termes de recherche: [crude potassium salt, kainit, kainita, kainite, kainite magnesienne, magnesia-kainit, sel brut de potasse]
+  vitesse: 3
+  matériel: [centrifuge]
+  coût: 2
+  apports:
+    K: 1
+    Mg: 1
+    S: 1
+  chlore: oui
+  sodium: oui
+
+produit . patentkali:
+  titre: Sulfate de potassium et de magnésium
+  catégorie: Engrais potassique
+  autres noms: Patentkali (marque K+S) ; potasse magnésienne sulfatée ; langbeinite (minéral) ; SOP-M
+  noms étrangers: "EN : potassium magnesium sulphate, langbeinite, K-Mag (US) ; ES : sulfato de potasio y magnesio ; DE : Patentkali, Kalimagnesia"
+  formule chimique: K2SO4·MgSO4 (+ kiesérite)
+  teneurs:
+    K2O: 30
+    SO3: 42.5
+    MgO: 10
+  autres éléments: Cl < 3 %
+  forme: Soluble eau
+  effet sur le pH: Neutre
+  agriculture biologique: Oui (origine naturelle)
+  statut AB: cond
+  à savoir: Valeurs du type Patentkali. Langbeinite naturelle ≈ 22 % K2O, 18 % MgO, 22 % S.
+  termes de recherche: [k-mag, kalimagnesia, langbeinite, patentkali, potasse magnesienne sulfatee, potassium magnesium sulphate, sop-m, sulfate de potassium et de magnesium, sulfato de potasio y magnesio]
+  vitesse: 3
+  matériel: [centrifuge]
+  coût: 3
+  apports:
+    K: 2
+    Mg: 2
+    S: 2
+
+produit . kornkali:
+  titre: Chlorure de potassium magnésien
+  catégorie: Engrais potassique
+  autres noms: Korn-Kali (marque K+S) ; potasse magnésienne ; « potasse 40 »
+  noms étrangers: "EN : potash with magnesium ; DE : Korn-Kali, 40er Kali"
+  formule chimique: KCl + MgSO4 (kiesérite)
+  teneurs:
+    K2O: 40
+    SO3: 12.5
+    MgO: 6
+  autres éléments: Na2O ≈ 3 % ; chlore
+  forme: Soluble eau
+  effet sur le pH: Neutre
+  agriculture biologique: Non
+  statut AB: non
+  à savoir: Grandes cultures et prairies lorsque Mg et S sont aussi nécessaires.
+  termes de recherche: [40er kali, chlorure de potassium magnesien, korn-kali, potash with magnesium, potasse 40, potasse magnesienne]
+  vitesse: 3
+  matériel: [centrifuge]
+  coût: 2
+  apports:
+    K: 2
+    Mg: 1
+    S: 1
+  chlore: oui
+
+produit . polyhalite:
+  titre: Polyhalite
+  catégorie: Engrais potassique
+  autres noms: Polyhalite ; Polysulphate (marque ICL)
+  noms étrangers: "EN : polyhalite, Polysulphate ; ES : polihalita ; DE : Polyhalit"
+  formule chimique: K2Ca2Mg(SO4)4·2H2O
+  teneurs:
+    K2O: 14
+    SO3: 48
+    MgO: 6
+    CaO: 17
+  forme: Minéral naturel, solubilisation progressive
+  effet sur le pH: Neutre
+  agriculture biologique: Oui (minéral naturel ; vérifier l'attestation du produit)
+  statut AB: cond
+  à savoir: Source multi-éléments (K, S, Mg, Ca) à libération plus progressive que les sulfates solubles. Extraite au Royaume-Uni.
+  termes de recherche: [polihalita, polyhalit, polyhalite, polysulphate]
+  vitesse: 2
+  matériel: [centrifuge]
+  coût: 3
+  apports:
+    K: 1
+    S: 2
+    Mg: 1

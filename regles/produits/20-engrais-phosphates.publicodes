@@ -1,0 +1,180 @@
+# Engrais phosphatés
+
+produit . ssp:
+  titre: Superphosphate simple
+  catégorie: Engrais phosphaté
+  autres noms: « Super 18 » ; superphosphate 18 ; superphosphate normal ; « super simple » ; SSP
+  noms étrangers: "EN : single superphosphate (SSP), normal superphosphate ; ES : superfosfato simple (de cal) ; DE : Superphosphat (Single-Superphosphat)"
+  formule chimique: Ca(H2PO4)2·H2O + CaSO4·2H2O
+  teneurs:
+    P2O5: 18
+    SO3: 30
+    CaO: 27
+  autres éléments: Cd selon l'origine du phosphate
+  forme: P soluble eau et citrate neutre (> 90 % soluble eau)
+  effet sur le pH: Neutre
+  agriculture biologique: Non
+  statut AB: non
+  à savoir: Apport conjoint P + S + Ca. Intéressant quand le soufre est aussi recherché (colza, légumineuses, prairies).
+  termes de recherche: [normal superphosphate, single superphosphate, single-superphosphat, ssp, super 18, super simple, superfosfato simple, superphosphat, superphosphate 18, superphosphate normal, superphosphate simple]
+  vitesse: 3
+  matériel: [centrifuge]
+  coût: 2
+  apports:
+    P: 2
+    S: 2
+  phosphore: soluble
+
+produit . tsp:
+  titre: Superphosphate triple
+  catégorie: Engrais phosphaté
+  autres noms: « Super 45 » ; « super 46 » ; superphosphate concentré ; « triple super » ; TSP
+  noms étrangers: "EN : triple superphosphate (TSP) ; ES : superfosfato triple ; DE : Triple-Superphosphat"
+  formule chimique: Ca(H2PO4)2·H2O
+  teneurs:
+    P2O5: 45
+    SO3: 3
+    CaO: 18
+  autres éléments: Cd selon l'origine du phosphate
+  forme: P soluble eau et citrate neutre
+  effet sur le pH: Neutre à légèrement acidifiant
+  agriculture biologique: Non
+  statut AB: non
+  à savoir: Phosphaté simple le plus concentré ; peu de soufre.
+  termes de recherche: [super 45, super 46, superfosfato triple, superphosphate concentre, superphosphate triple, triple super, triple superphosphate, triple-superphosphat, tsp]
+  vitesse: 3
+  matériel: [centrifuge]
+  coût: 1
+  apports:
+    P: 2
+  phosphore: soluble
+
+produit . dap:
+  titre: Phosphate diammonique (DAP)
+  catégorie: Engrais phosphaté
+  autres noms: DAP ; « 18-46 » ; phosphate d'ammoniaque ; 18-46-0
+  noms étrangers: "EN : diammonium phosphate (DAP) ; ES : fosfato diamónico (DAP) ; DE : Diammonphosphat (DAP)"
+  formule chimique: (NH4)2HPO4
+  teneurs:
+    N: 18
+    P2O5: 46
+  forme: N ammoniacal ; P soluble eau
+  effet sur le pH: Acidifiant (alcalin au contact du granulé)
+  agriculture biologique: Non
+  statut AB: non
+  à savoir: "Libère du NH3 autour du granulé : éviter le contact direct avec la semence."
+  termes de recherche: [dap, diammonium phosphate, diammonphosphat, fosfato diamonico, phosphate d ammoniaque, phosphate diammonique]
+  vitesse: 3
+  matériel: [centrifuge, localisateur]
+  volatilisation: 1
+  coût: 1
+  apports:
+    P: 2
+    N: 1
+  classe nitrates: III
+  effet acidifiant: -1
+  ammoniacal: oui
+  phosphore: soluble
+
+produit . map:
+  titre: Phosphate monoammonique (MAP)
+  catégorie: Engrais phosphaté
+  autres noms: MAP ; « 11-52 » ; « 12-52 » ; phosphate monoammonique
+  noms étrangers: "EN : monoammonium phosphate (MAP) ; ES : fosfato monoamónico (MAP) ; DE : Monoammonphosphat (MAP)"
+  formule chimique: NH4H2PO4
+  teneurs:
+    N: 11
+    P2O5: 52
+  forme: N ammoniacal ; P soluble eau
+  effet sur le pH: Acidifiant
+  agriculture biologique: Non
+  statut AB: non
+  à savoir: "Mieux toléré par la semence que le DAP : usage starter, localisé au semis."
+  termes de recherche: [fosfato monoamonico, map, monoammonium phosphate, monoammonphosphat, phosphate monoammonique]
+  vitesse: 3
+  matériel: [centrifuge, localisateur]
+  volatilisation: 0.5
+  coût: 2
+  apports:
+    P: 2
+    N: 1
+  classe nitrates: III
+  effet acidifiant: -1
+  phosphore: soluble
+
+produit . app:
+  titre: Polyphosphate d'ammonium (APP)
+  catégorie: Engrais phosphaté
+  autres noms: APP ; « 10-34-0 » ; phosphate d'ammonium liquide ; polyphosphate
+  noms étrangers: "EN : ammonium polyphosphate (APP, 10-34-0) ; ES : polifosfato amónico ; DE : Ammoniumpolyphosphat"
+  formule chimique: Polyphosphates d'ammonium en solution
+  teneurs:
+    N: 10
+    P2O5: 34
+  autres éléments: Liquide
+  forme: N ammoniacal ; P en partie sous forme polyphosphates (hydrolysés en orthophosphates)
+  effet sur le pH: Acidifiant
+  agriculture biologique: Non
+  statut AB: non
+  à savoir: Starter liquide localisé au semis (maïs), courant en Amérique du Nord.
+  termes de recherche: [ammonium polyphosphate, ammoniumpolyphosphat, app, phosphate d ammonium liquide, polifosfato amonico, polyphosphate, polyphosphate d ammonium]
+  vitesse: 3
+  matériel: [localisateur, pulve]
+  volatilisation: 0.5
+  coût: 3
+  apports:
+    P: 2
+    N: 1
+  classe nitrates: III
+  effet acidifiant: -1
+  liquide: oui
+  phosphore: soluble
+
+produit . pnt:
+  titre: Phosphate naturel tendre
+  catégorie: Engrais phosphaté
+  autres noms: Phosphate naturel ; PNT ; phosphate naturel tendre broyé ; roche phosphatée ; phosphate de Gafsa (Tunisie) ; Hyperphosphate (nom commercial historique)
+  noms étrangers: "EN : (soft) rock phosphate, reactive phosphate rock (RPR) ; ES : fosfato natural, roca fosfórica ; DE : Rohphosphat (weicherdig)"
+  formule chimique: Apatite carbonatée Ca10(PO4)6(F,OH,CO3)2
+  teneurs:
+    P2O5: 28
+    CaO: 45
+  autres éléments: Cd variable selon le gisement
+  forme: P insoluble eau ; soluble acide formique (≥ 55 % du P total)
+  effet sur le pH: Légèrement alcalinisant
+  agriculture biologique: Oui (Cd ≤ 90 mg/kg P2O5)
+  statut AB: cond
+  à savoir: Efficace surtout en sols acides (pH < 6,5) et en prairies ; action lente.
+  termes de recherche: [fosfato natural, hyperphosphate, phosphate de gafsa, phosphate naturel, phosphate naturel tendre, phosphate naturel tendre broye, pnt, reactive phosphate rock, roca fosforica, roche phosphatee, rock phosphate, rohphosphat, rpr]
+  vitesse: 1
+  matériel: [centrifuge]
+  coût: 2
+  apports:
+    P: 2
+  phosphore: acide
+
+produit . scories:
+  titre: Scories Thomas
+  catégorie: Engrais phosphaté
+  autres noms: Scories de déphosphoration ; phosphate Thomas ; « scories » ; laitier de déphosphoration ; Thomaskalk
+  noms étrangers: "EN : basic slag, Thomas phosphate ; ES : escorias Thomas ; DE : Thomasmehl, Thomaskalk"
+  formule chimique: Silicophosphates de calcium + chaux
+  teneurs:
+    P2O5: 12
+    MgO: 3
+    CaO: 45
+    VN: 45
+  autres éléments: SiO2, Fe, Mn, oligo-éléments
+  forme: P soluble acide citrique 2 %
+  effet sur le pH: Alcalinisant (effet chaulant)
+  agriculture biologique: Oui
+  statut AB: oui
+  à savoir: "Valeurs du produit historique. Procédé Thomas abandonné : les produits actuels sont très variables et souvent moins riches en P."
+  termes de recherche: [basic slag, escorias thomas, laitier de dephosphoration, phosphate thomas, scories de dephosphoration, scories thomas, thomas phosphate, thomaskalk, thomasmehl]
+  vitesse: 1
+  matériel: [centrifuge, epandeur_amendement]
+  coût: 2
+  apports:
+    P: 1
+    pH: 1
+  phosphore: acide

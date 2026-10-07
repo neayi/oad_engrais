@@ -1,0 +1,70 @@
+# Oligo-éléments
+
+produit . bore:
+  titre: Octaborate de sodium
+  catégorie: Oligo-élément
+  autres noms: Octaborate disodique ; Solubor (marque) ; borate de sodium ; borax (tétraborate, ≈ 11 % B)
+  noms étrangers: "EN : disodium octaborate tetrahydrate, Solubor ; ES : octaborato de sodio ; DE : Dinatriumoctaborat"
+  formule chimique: Na2B8O13·4H2O
+  teneurs:
+    B: 20.8
+  autres éléments: B ≈ 20,8 % ; Na2O ≈ 15 %
+  forme: Très soluble (foliaire ou sol)
+  effet sur le pH: Neutre
+  agriculture biologique: Oui si carence reconnue
+  statut AB: cond
+  à savoir: Colza, betterave, tournesol, luzerne. Marge étroite entre carence et toxicité.
+  termes de recherche: [borate de sodium, borax, dinatriumoctaborat, disodium octaborate tetrahydrate, octaborate de sodium, octaborate disodique, octaborato de sodio, solubor, tetraborate]
+  vitesse: 3
+  matériel: [pulve]
+  coût: 2
+  apports:
+    B: 2
+  foliaire: oui
+
+produit . mn:
+  titre: Sulfate de manganèse
+  catégorie: Oligo-élément
+  autres noms: Sulfate de manganèse monohydraté
+  noms étrangers: "EN : manganese sulphate ; ES : sulfato de manganeso ; DE : Mangansulfat"
+  formule chimique: MnSO4·H2O
+  teneurs:
+    SO3: 47
+    Mn: 32
+  autres éléments: Mn ≈ 32 %
+  forme: Soluble (surtout en foliaire)
+  effet sur le pH: Neutre
+  agriculture biologique: Oui si carence reconnue
+  statut AB: cond
+  à savoir: Carences induites en sols calcaires, soufflés ou très organiques (céréales, betterave). Le foliaire est plus efficace que l'apport au sol.
+  termes de recherche: [manganese sulphate, mangansulfat, sulfate de manganese, sulfate de manganese monohydrate, sulfato de manganeso]
+  vitesse: 3
+  matériel: [pulve]
+  coût: 2
+  apports:
+    Mn: 2
+  foliaire: oui
+  foliaire seulement: oui
+
+produit . zn:
+  titre: Sulfate de zinc
+  catégorie: Oligo-élément
+  autres noms: Sulfate de zinc monohydraté (≈ 35 % Zn) ; heptahydraté (≈ 22 % Zn)
+  noms étrangers: "EN : zinc sulphate ; ES : sulfato de zinc ; DE : Zinksulfat"
+  formule chimique: ZnSO4·H2O
+  teneurs:
+    SO3: 44
+    Zn: 35
+  autres éléments: Zn ≈ 35 %
+  forme: Soluble
+  effet sur le pH: Neutre
+  agriculture biologique: Oui si carence reconnue
+  statut AB: cond
+  à savoir: Maïs et lin sensibles ; carences en sols calcaires ou riches en P. Valeurs du monohydraté.
+  termes de recherche: [sulfate de zinc, sulfate de zinc monohydrate, sulfato de zinc, zinc sulphate, zinksulfat]
+  vitesse: 3
+  matériel: [localisateur, pulve, centrifuge]
+  coût: 2
+  apports:
+    Zn: 2
+  foliaire: oui

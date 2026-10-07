@@ -90,7 +90,7 @@ culture . pomme de terre:
   exigence potasse: forte
   sensibilité acidité: faible
   sensible au chlore: oui
-  préférences: &pdt_sans_chlore
+  préférences:
     sop:
       bonus: 10
       raison: "Sans chlore : qualité des tubercules préservée."
@@ -103,7 +103,13 @@ culture . pomme de terre . fumure de fond:
   id: fond
   phase: fond
   mots-clés: [avant plantation, fond, fumure de fond, automne, hiver, preparation, labour]
-  préférences: *pdt_sans_chlore
+  préférences:
+    sop:
+      bonus: 10
+      raison: "Sans chlore : qualité des tubercules préservée."
+    patentkali:
+      bonus: 8
+      raison: Sans chlore, apporte aussi magnésium et soufre.
 
 culture . pomme de terre . fumure de fond . potasse:
   valeur: 2
@@ -135,7 +141,13 @@ culture . pomme de terre . plantation:
   id: plantation
   phase: semis
   mots-clés: [plantation, planter, plante, avril, mars]
-  préférences: *pdt_sans_chlore
+  préférences:
+    sop:
+      bonus: 10
+      raison: "Sans chlore : qualité des tubercules préservée."
+    patentkali:
+      bonus: 8
+      raison: Sans chlore, apporte aussi magnésium et soufre.
 
 culture . pomme de terre . plantation . azote:
   valeur: 2

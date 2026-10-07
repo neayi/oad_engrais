@@ -13,6 +13,6 @@ FROM nginxinc/nginx-unprivileged:stable-alpine
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY public/ /usr/share/nginx/html/
 COPY --from=build /app/public/assets/css/style.css /usr/share/nginx/html/assets/css/style.css
-COPY --from=build /app/public/data/regles.json /usr/share/nginx/html/data/regles.json
+COPY --from=build /app/public/data/ /usr/share/nginx/html/data/
 COPY --from=build /app/public/assets/vendor/ /usr/share/nginx/html/assets/vendor/
 EXPOSE 8080

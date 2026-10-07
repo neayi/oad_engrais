@@ -1,0 +1,193 @@
+# Engrais organiques
+
+produit . vinasse:
+  titre: Vinasse de betterave
+  catégorie: Engrais organique
+  autres noms: Vinasse ; vinasse concentrée ; mélasse fermentée désucrée
+  noms étrangers: "EN : (beet) vinasse ; ES : vinaza ; DE : Vinasse"
+  formule chimique: —
+  teneurs:
+    N: 3
+    K2O: 7
+  autres éléments: Sodium, matière organique
+  forme: N organique (bétaïne) ; K soluble
+  effet sur le pH: Neutre
+  agriculture biologique: Oui (vinasses ammoniacales exclues)
+  statut AB: cond
+  à savoir: Engrais organique NK liquide, ou composant d'engrais organiques granulés.
+  termes de recherche: [melasse fermentee desucree, vinasse concentree, vinasse de betterave, vinaza]
+  vitesse: 2
+  matériel: [pulve, tonne]
+  volatilisation: 1
+  coût: 2
+  apports:
+    N: 1
+    K: 2
+  classe nitrates: II
+  liquide: oui
+  organique: oui
+
+produit . plumes:
+  titre: Farine de plumes
+  catégorie: Engrais organique
+  autres noms: Plumes hydrolysées ; kératine hydrolysée
+  noms étrangers: "EN : (hydrolysed) feather meal ; ES : harina de plumas ; DE : Federmehl"
+  formule chimique: Kératine hydrolysée
+  teneurs:
+    N: 13
+  forme: N organique, minéralisation progressive
+  effet sur le pH: Neutre
+  agriculture biologique: Oui
+  statut AB: oui
+  à savoir: Base fréquente des engrais organiques azotés du commerce.
+  termes de recherche: [farine de plumes, feather meal, federmehl, harina de plumas, keratine hydrolysee, plumes hydrolysees]
+  vitesse: 2
+  matériel: [centrifuge]
+  coût: 3
+  apports:
+    N: 2
+  classe nitrates: II
+  organique: oui
+
+produit . sang:
+  titre: Farine de sang
+  catégorie: Engrais organique
+  autres noms: Sang séché ; poudre de sang ; sang desséché
+  noms étrangers: "EN : blood meal, dried blood ; ES : harina de sangre ; DE : Blutmehl"
+  formule chimique: Protéines sanguines
+  teneurs:
+    N: 12
+  forme: N organique, minéralisation rapide
+  effet sur le pH: Neutre
+  agriculture biologique: Oui
+  statut AB: oui
+  à savoir: L'engrais organique azoté le plus rapide.
+  termes de recherche: [blood meal, blutmehl, dried blood, farine de sang, harina de sangre, poudre de sang, sang desseche, sang seche]
+  vitesse: 3
+  matériel: [centrifuge]
+  coût: 3
+  apports:
+    N: 2
+  classe nitrates: II
+  organique: oui
+
+produit . corne:
+  titre: Corne torréfiée
+  catégorie: Engrais organique
+  autres noms: Corne broyée ; poudre de corne ; cornaille ; corne et onglons
+  noms étrangers: "EN : hoof and horn meal ; ES : harina de cuerno y pezuña ; DE : Hornmehl, Hornspäne"
+  formule chimique: Kératine
+  teneurs:
+    N: 13
+  forme: Minéralisation lente (copeaux) à moyenne (poudre)
+  effet sur le pH: Neutre
+  agriculture biologique: Oui
+  statut AB: oui
+  à savoir: Effet d'autant plus lent que la mouture est grossière.
+  termes de recherche: [cornaille, corne broyee, corne et onglons, corne torrefiee, harina de cuerno y pezuna, hoof and horn meal, hornmehl, hornspane, poudre de corne]
+  vitesse: 1
+  matériel: [centrifuge]
+  coût: 3
+  apports:
+    N: 2
+  classe nitrates: II
+  organique: oui
+
+produit . viandeos:
+  titre: Farine de viande et d'os
+  catégorie: Engrais organique
+  autres noms: Farine animale ; PAT (protéines animales transformées) ; « viande-os »
+  noms étrangers: "EN : meat and bone meal (MBM) ; ES : harina de carne y hueso ; DE : Tiermehl, Fleischknochenmehl"
+  formule chimique: —
+  teneurs:
+    N: 7
+    P2O5: 9
+    CaO: 12
+  forme: N organique rapide à moyen ; P sous forme phosphate de calcium
+  effet sur le pH: Neutre
+  agriculture biologique: Oui
+  statut AB: oui
+  à savoir: "Sous-produits animaux (catégorie 3) : délai de 21 jours avant pâturage ou récolte d'herbe après épandage."
+  termes de recherche: [farine de viande et d os, fleischknochenmehl, harina de carne y hueso, mbm, meat and bone meal, tiermehl, viande-os]
+  vitesse: 2
+  matériel: [centrifuge]
+  coût: 2
+  apports:
+    N: 2
+    P: 1
+  classe nitrates: II
+  organique: oui
+
+produit . os:
+  titre: Poudre d'os
+  catégorie: Engrais organique
+  autres noms: Farine d'os ; os dégélatinés ; phosphate d'os
+  noms étrangers: "EN : (steamed) bone meal ; ES : harina de hueso ; DE : Knochenmehl"
+  formule chimique: Phosphate tricalcique + collagène
+  teneurs:
+    N: 1
+    P2O5: 28
+    CaO: 35
+  forme: P peu soluble (phosphate tricalcique)
+  effet sur le pH: Légèrement alcalinisant
+  agriculture biologique: Oui
+  statut AB: oui
+  à savoir: Source organique de P à action lente, plus efficace en sol acide.
+  termes de recherche: [bone meal, farine d os, harina de hueso, knochenmehl, os degelatines, phosphate d os, poudre d os]
+  vitesse: 1
+  matériel: [centrifuge]
+  coût: 3
+  apports:
+    P: 2
+  phosphore: acide
+  organique: oui
+
+produit . guano:
+  titre: Guano
+  catégorie: Engrais organique
+  autres noms: Guano d'oiseaux marins ; guano du Pérou ; guano de chauve-souris
+  noms étrangers: "EN : (seabird or bat) guano ; ES : guano (de islas) ; DE : Guano"
+  formule chimique: —
+  teneurs:
+    N: 11
+    P2O5: 10
+    K2O: 2.5
+  forme: N rapidement disponible (acide urique)
+  effet sur le pH: Neutre
+  agriculture biologique: Oui
+  statut AB: oui
+  à savoir: "Composition très variable selon l'origine : les guanos anciens sont plus riches en P et plus pauvres en N."
+  termes de recherche: [guano, guano d oiseaux marins, guano de chauve-souris, guano du perou]
+  vitesse: 2
+  matériel: [centrifuge]
+  volatilisation: 1
+  coût: 3
+  apports:
+    N: 2
+    P: 2
+  classe nitrates: II
+  organique: oui
+
+produit . ricin:
+  titre: Tourteau de ricin
+  catégorie: Engrais organique
+  autres noms: Ricin ; tourteau de ricin
+  noms étrangers: "EN : castor meal, castor cake ; ES : torta de ricino ; DE : Rizinusschrot"
+  formule chimique: —
+  teneurs:
+    N: 5.5
+    P2O5: 1.8
+    K2O: 1.2
+  forme: N organique, minéralisation moyenne
+  effet sur le pH: Neutre
+  agriculture biologique: Oui
+  statut AB: oui
+  à savoir: "Toxique (ricine) pour les animaux domestiques : précautions de stockage et d'usage."
+  termes de recherche: [castor cake, castor meal, rizinusschrot, torta de ricino, tourteau de ricin]
+  vitesse: 2
+  matériel: [centrifuge]
+  coût: 3
+  apports:
+    N: 1
+  classe nitrates: II
+  organique: oui

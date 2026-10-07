@@ -1,0 +1,39 @@
+# =====================================================================
+# PRODUITS : engrais, amendements et effluents.
+# Chaque produit est une règle `produit . <id>` ; l'id est celui que citent
+# les préférences des stades. Les fichiers sont lus dans l'ordre
+# alphabétique (ordre d'affichage) et compilés par `npm run build:rules`
+# dans public/data/products.json (correspondance des champs :
+# PRODUCT_FIELDS dans scripts/build-rules.mjs).
+#
+# Textes affichés sur la fiche :
+#   titre, catégorie, autres noms, noms étrangers, formule chimique,
+#   autres éléments, forme, effet sur le pH, agriculture biologique, à savoir
+# Sources : `références`, attribut standard publicodes, affiché sur la
+#   fiche produit. Un intitulé par source, suivi de son adresse :
+#     références:
+#       Fiche technique du fabricant: https://exemple.fr/fiche.pdf
+#       Guide de la fertilisation raisonnée, COMIFER: https://comifer.asso.fr/
+# Recherche : `termes de recherche`, en minuscules, sans accents,
+#   apostrophes remplacées par des espaces (sulfate d ammo).
+# Composition : `teneurs`, en % du produit brut : N, P2O5, K2O, SO3, MgO,
+#   CaO, VN, B, Mn, Zn.
+# Classement :
+#   apports              besoins couverts, 1 en partie, 2 source principale
+#                        (N, P, K, S, Mg, pH, MO, B, Mn, Zn)
+#   vitesse              1 lente, 2 moyenne, 3 rapide
+#   matériel             clés de EQUIP (public/assets/js/rules.js)
+#   volatilisation       sensibilité à la volatilisation ammoniacale, 0 à 3
+#   coût                 coût relatif par unité fertilisante, 1 bas à 3 élevé
+#   statut AB            oui, non ou cond (sous conditions)
+#   effet acidifiant     -3 (très acidifiant) à +1
+#   phosphore            soluble (eau) ou acide (solubilisé en sol acide)
+#   classe nitrates      I, II ou III (directive nitrates)
+#   effluent de ferme    clé de OWN, bonus « disponible sur l'exploitation »
+#   densité              kg/L, pour les produits liquides
+#   ammoniacal, liquide, foliaire, foliaire seulement, chlore, sodium,
+#   organique            oui / non
+# =====================================================================
+
+produit:
+  titre: Produits

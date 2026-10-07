@@ -1,0 +1,54 @@
+# Engrais composés
+
+produit . npk:
+  titre: NPK 15-15-15
+  catégorie: Engrais composé
+  autres noms: Ternaire ; « complet » ; « triple 15 » ; engrais complexe (granulés homogènes) ; mélange ou « bulk blend » (granulés juxtaposés)
+  noms étrangers: "EN : NPK compound fertiliser, blended fertiliser ; ES : complejo NPK, abono compuesto ; DE : NPK-Volldünger, Mehrnährstoffdünger"
+  formule chimique: Variable
+  teneurs:
+    N: 15
+    P2O5: 15
+    K2O: 15
+  forme: Selon fabrication
+  effet sur le pH: Acidifiant modéré
+  agriculture biologique: Non
+  statut AB: non
+  à savoir: "Formule donnée à titre d'exemple. Complexe : chaque granulé contient N, P et K. Mélange : risque de ségrégation à l'épandage."
+  termes de recherche: [abono compuesto, blended fertiliser, complejo npk, mehrnahrstoffdunger, npk 15-15-15, npk compound fertiliser, npk-volldunger, triple 15]
+  vitesse: 3
+  matériel: [centrifuge]
+  volatilisation: 0.5
+  coût: 2
+  apports:
+    N: 1
+    P: 1
+    K: 1
+  classe nitrates: III
+  effet acidifiant: -0.5
+  phosphore: soluble
+  chlore: oui
+
+produit . pk:
+  titre: PK 0-25-25
+  catégorie: Engrais composé
+  autres noms: Binaire PK ; « PK » ; autres formules courantes 0-20-30, 0-15-30
+  noms étrangers: "EN : PK fertiliser ; ES : abono PK ; DE : PK-Dünger"
+  formule chimique: Souvent SSP / TSP + KCl
+  teneurs:
+    P2O5: 25
+    K2O: 25
+  forme: Selon fabrication
+  effet sur le pH: Neutre
+  agriculture biologique: Non
+  statut AB: non
+  à savoir: Formule donnée à titre d'exemple ; fumure de fond des grandes cultures.
+  termes de recherche: [abono pk, binaire pk, pk 0-25-25, pk fertiliser, pk-dunger]
+  vitesse: 3
+  matériel: [centrifuge]
+  coût: 2
+  apports:
+    P: 2
+    K: 2
+  phosphore: soluble
+  chlore: oui

@@ -7,4 +7,5 @@ node_modules/
 public/assets/css/style.css
 # Générés depuis regles/ et node_modules/ par npm run build:rules
 public/data/regles.json
+public/data/products.json
 public/assets/vendor/

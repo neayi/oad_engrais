@@ -364,6 +364,13 @@
         <dt>Effet sur le pH</dt><dd>${esc(p.ph)}</dd>
         <dt>Agriculture biologique</dt><dd>${esc(p.abTxt)}</dd>
         <dt>À savoir</dt><dd>${esc(p.rem)}</dd>
+        ${
+          p.refs
+            ? `<dt>Sources</dt><dd>${Object.entries(p.refs)
+                .map(([t, u]) => `<a href="${esc(u)}" rel="noopener noreferrer">${esc(t)}</a>`)
+                .join(' ; ')}</dd>`
+            : ''
+        }
       </dl>
       ${
         eq.length

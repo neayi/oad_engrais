@@ -65,7 +65,7 @@ culture . colza . reprise:
   phase: veg
   mots-clés:
     [reprise, reprise de vegetation, sortie hiver, sortie d hiver, c1, c2, fevrier, 1er apport, premier apport]
-  préférences: &colza_sulfate
+  préférences:
     sa:
       bonus: 6
       raison: Forme sulfate recommandée pour le colza (Terres Inovia).
@@ -86,7 +86,7 @@ culture . colza . reprise . soufre:
   source: Terres Inovia
   description: "75 kg SO3/ha sous forme sulfate, avec le 1er ou le 2e apport d'azote (C2 à D1) ; 50 kg SO3/ha si la parcelle reçoit des apports organiques réguliers. Aucun intérêt à fractionner."
 
-culture . colza . reprise . soufre . repère: &soufre_75_50
+culture . colza . reprise . soufre . repère:
   variations:
     - si: contexte . apports organiques
       alors: 50
@@ -102,7 +102,16 @@ culture . colza . montaison:
   id: montaison
   phase: veg
   mots-clés: [montaison, debut montaison, d1, d2, boutons accoles, 2e apport, deuxieme apport, mars]
-  préférences: *colza_sulfate
+  préférences:
+    sa:
+      bonus: 6
+      raison: Forme sulfate recommandée pour le colza (Terres Inovia).
+    asn:
+      bonus: 8
+      raison: Azote et soufre sulfate en un seul passage, comme le recommande Terres Inovia.
+    soufre:
+      bonus: -30
+      raison: "Soufre élémentaire trop lent : Terres Inovia recommande la forme sulfate au printemps."
 
 culture . colza . montaison . azote:
   valeur: 2
@@ -114,7 +123,11 @@ culture . colza . montaison . soufre:
   source: Terres Inovia
   description: "Si le soufre n'a pas encore été apporté : 75 kg SO3/ha sous forme sulfate (50 avec apports organiques réguliers)."
 
-culture . colza . montaison . soufre . repère: *soufre_75_50
+culture . colza . montaison . soufre . repère:
+  variations:
+    - si: contexte . apports organiques
+      alors: 50
+    - sinon: 75
 
 culture . colza . montaison . bore:
   valeur: niveau . si sol superficiel

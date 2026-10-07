@@ -1,0 +1,278 @@
+# Effluents et amendements organiques
+
+produit . fumierbov:
+  titre: Fumier de bovins
+  catégorie: Effluent / amendement organique
+  autres noms: Fumier ; fumier pailleux ; fumier de ferme ; fumier de litière accumulée ; fumier compact
+  noms étrangers: "EN : cattle manure, farmyard manure (FYM) ; ES : estiércol de vacuno ; DE : Rindermist, Stallmist"
+  formule chimique: —
+  teneurs:
+    N: 0.55
+    P2O5: 0.25
+    K2O: 0.9
+    SO3: 0.2
+    MgO: 0.15
+    CaO: 0.4
+  autres éléments: MS ≈ 20-25 % ; C/N ≈ 15-20
+  forme: N très majoritairement organique ; K rapidement disponible
+  effet sur le pH: Neutre
+  agriculture biologique: Oui (hors élevages « industriels »)
+  statut AB: cond
+  à savoir: "≈ 5,5 kg N/t. Effet N de 1re année faible (≈ 10-15 % du N total). Composition très variable : analyser."
+  termes de recherche: [cattle manure, estiercol de vacuno, farmyard manure, fumier compact, fumier de bovins, fumier de litiere accumulee, fumier pailleux, fym, rindermist, stallmist]
+  vitesse: 1
+  matériel: [epandeur_fumier]
+  coût: 1
+  apports:
+    MO: 2
+    K: 1
+    N: 1
+    P: 1
+  classe nitrates: I
+  effluent de ferme: fumier_bovin
+  organique: oui
+
+produit . compostfum:
+  titre: Compost de fumier
+  catégorie: Effluent / amendement organique
+  autres noms: Fumier composté ; compost de fumier bovin
+  noms étrangers: "EN : composted manure ; ES : estiércol compostado ; DE : Mistkompost"
+  formule chimique: —
+  teneurs:
+    N: 0.75
+    P2O5: 0.4
+    K2O: 1.1
+    MgO: 0.25
+    CaO: 0.8
+  autres éléments: MS ≈ 30-40 % ; C/N ≈ 12-15
+  forme: N organique stabilisé
+  effet sur le pH: Neutre
+  agriculture biologique: Oui (hors élevages « industriels »)
+  statut AB: cond
+  à savoir: Plus concentré et plus stable que le fumier frais ; ISMO plus élevé.
+  termes de recherche: [compost de fumier, compost de fumier bovin, composted manure, estiercol compostado, fumier composte, mistkompost]
+  vitesse: 1
+  matériel: [epandeur_fumier]
+  coût: 1
+  apports:
+    MO: 2
+    K: 1
+    P: 1
+  classe nitrates: I
+  effluent de ferme: fumier_bovin
+  organique: oui
+
+produit . lisierbov:
+  titre: Lisier de bovins
+  catégorie: Effluent / amendement organique
+  autres noms: Lisier ; lisier bovin
+  noms étrangers: "EN : cattle slurry ; ES : purín de vacuno ; DE : Rindergülle"
+  formule chimique: —
+  teneurs:
+    N: 0.4
+    P2O5: 0.17
+    K2O: 0.45
+    MgO: 0.07
+    CaO: 0.2
+  autres éléments: MS ≈ 7-10 %
+  forme: ≈ 40-50 % du N sous forme ammoniacale
+  effet sur le pH: Neutre
+  agriculture biologique: Oui (après fermentation contrôlée ou dilution ; hors élevages « industriels »)
+  statut AB: cond
+  à savoir: "Valeurs par tonne ≈ par m³. Faux-ami : l'espagnol « purín » désigne le lisier, alors que le purin français = urines + jus (pauvre en P, riche en K)."
+  termes de recherche: [cattle slurry, lisier bovin, lisier de bovins, purin de vacuno, rindergulle]
+  vitesse: 2
+  matériel: [tonne]
+  volatilisation: 3
+  coût: 1
+  apports:
+    N: 1
+    K: 1
+  classe nitrates: II
+  liquide: oui
+  effluent de ferme: lisier_bovin
+  organique: oui
+
+produit . lisierporc:
+  titre: Lisier de porcs
+  catégorie: Effluent / amendement organique
+  autres noms: Lisier porcin ; lisier d'engraissement
+  noms étrangers: "EN : pig slurry ; ES : purín de cerdo ; DE : Schweinegülle"
+  formule chimique: —
+  teneurs:
+    N: 0.45
+    P2O5: 0.25
+    K2O: 0.3
+    MgO: 0.1
+    CaO: 0.25
+  autres éléments: MS ≈ 4-6 %
+  forme: ≈ 60-70 % du N sous forme ammoniacale
+  effet sur le pH: Neutre
+  agriculture biologique: Oui (mêmes conditions)
+  statut AB: cond
+  à savoir: Effet N rapide, proche d'un engrais minéral si épandu sur culture en place avec un matériel adapté. Fortes pertes NH3 en épandage de surface.
+  termes de recherche: [lisier d engraissement, lisier de porcs, lisier porcin, pig slurry, purin de cerdo, schweinegulle]
+  vitesse: 3
+  matériel: [tonne]
+  volatilisation: 3
+  coût: 1
+  apports:
+    N: 2
+    P: 1
+    K: 1
+  classe nitrates: II
+  liquide: oui
+  effluent de ferme: lisier_porc
+  organique: oui
+
+produit . fumiervol:
+  titre: Fumier de volailles
+  catégorie: Effluent / amendement organique
+  autres noms: Fumier de volailles de chair ; litière de volailles ; fumier de poulets
+  noms étrangers: "EN : poultry litter, broiler litter ; ES : gallinaza (de cama), estiércol de pollo ; DE : Geflügelmist, Hähnchenmist"
+  formule chimique: —
+  teneurs:
+    N: 2.7
+    P2O5: 2.3
+    K2O: 2.2
+    MgO: 0.6
+    CaO: 2.5
+  autres éléments: MS ≈ 60-70 %
+  forme: "N en partie urique : rapidement disponible"
+  effet sur le pH: Neutre à légèrement alcalinisant
+  agriculture biologique: Oui (hors élevages « industriels »)
+  statut AB: cond
+  à savoir: Effet engrais marqué ; dose souvent limitée par l'apport de phosphore.
+  termes de recherche: [broiler litter, estiercol de pollo, fumier de poulets, fumier de volailles, fumier de volailles de chair, geflugelmist, hahnchenmist, litiere de volailles, poultry litter]
+  vitesse: 2
+  matériel: [epandeur_fumier]
+  volatilisation: 2
+  coût: 1
+  apports:
+    N: 2
+    P: 2
+    K: 1
+    MO: 1
+  classe nitrates: II
+  effluent de ferme: volailles
+  organique: oui
+
+produit . fientes:
+  titre: Fientes de poules séchées
+  catégorie: Effluent / amendement organique
+  autres noms: Fientes ; fientes séchées ; fientes déshydratées ; fientes granulées (bouchons)
+  noms étrangers: "EN : dried layer manure, poultry droppings ; ES : gallinaza ; DE : Hühnertrockenkot (HTK)"
+  formule chimique: —
+  teneurs:
+    N: 4
+    P2O5: 3.5
+    K2O: 2.8
+    MgO: 0.8
+    CaO: 9
+  autres éléments: MS ≈ 80-90 %
+  forme: N à minéralisation rapide (acide urique)
+  effet sur le pH: Alcalinisant (riche en Ca)
+  agriculture biologique: Oui (hors élevages « industriels »)
+  statut AB: cond
+  à savoir: Fientes fraîches nettement moins concentrées (MS ≈ 25-40 %). Base fréquente des engrais organiques granulés.
+  termes de recherche: [dried layer manure, fientes, fientes de poules sechees, fientes deshydratees, fientes granulees, fientes sechees, htk, huhnertrockenkot, poultry droppings]
+  vitesse: 2
+  matériel: [epandeur_fumier, centrifuge]
+  volatilisation: 2
+  coût: 2
+  apports:
+    N: 2
+    P: 2
+    K: 1
+  classe nitrates: II
+  effluent de ferme: volailles
+  organique: oui
+
+produit . compostdv:
+  titre: Compost de déchets verts
+  catégorie: Effluent / amendement organique
+  autres noms: Compost végétal ; CDV ; compost de broyats ; compost NF U 44-051
+  noms étrangers: "EN : green waste compost ; ES : compost de restos vegetales ; DE : Grüngutkompost"
+  formule chimique: —
+  teneurs:
+    N: 1
+    P2O5: 0.4
+    K2O: 0.9
+    MgO: 0.4
+    CaO: 2.5
+  autres éléments: MS ≈ 60-70 % ; C/N ≈ 15-20
+  forme: N organique très lentement minéralisable
+  effet sur le pH: Légèrement alcalinisant
+  agriculture biologique: Oui
+  statut AB: oui
+  à savoir: "Amendement d'entretien de la matière organique plus qu'engrais : effet N quasi nul la 1re année."
+  termes de recherche: [cdv, compost de broyats, compost de dechets verts, compost de restos vegetales, compost nf u 44-051, compost vegetal, green waste compost, grungutkompost]
+  vitesse: 1
+  matériel: [epandeur_fumier]
+  coût: 1
+  apports:
+    MO: 2
+    K: 1
+  classe nitrates: I
+  effluent de ferme: compost
+  organique: oui
+
+produit . digestat:
+  titre: Digestat de méthanisation
+  catégorie: Effluent / amendement organique
+  autres noms: Digestat brut ; digestat liquide (fraction liquide après séparation) ; digestat solide (fraction solide)
+  noms étrangers: "EN : digestate (whole, liquid or solid fraction) ; ES : digestato ; DE : Gärrest"
+  formule chimique: —
+  teneurs:
+    N: 0.45
+    P2O5: 0.15
+    K2O: 0.4
+  autres éléments: MS ≈ 5-10 % (brut)
+  forme: ≈ 50-70 % du N sous forme ammoniacale
+  effet sur le pH: Neutre à légèrement alcalinisant
+  agriculture biologique: Oui sous conditions (intrants autorisés en AB)
+  statut AB: cond
+  à savoir: "Composition liée aux intrants (effluents, CIVE, biodéchets). Fort risque de volatilisation NH3 (pH élevé) : pendillards ou enfouissement rapide."
+  termes de recherche: [digestat brut, digestat de methanisation, digestat liquide, digestat solide, digestate, digestato, garrest]
+  vitesse: 3
+  matériel: [tonne]
+  volatilisation: 3
+  coût: 1
+  apports:
+    N: 2
+    K: 1
+  classe nitrates: II
+  liquide: oui
+  effluent de ferme: digestat
+  organique: oui
+
+produit . boues:
+  titre: Boues de station d'épuration
+  catégorie: Effluent / amendement organique
+  autres noms: Boues urbaines ; boues de STEP ; boues chaulées ; boues séchées ; biosolides
+  noms étrangers: "EN : sewage sludge, biosolids ; ES : lodos de depuradora (EDAR) ; DE : Klärschlamm"
+  formule chimique: —
+  teneurs:
+    N: 0.9
+    P2O5: 1.2
+    K2O: 0.1
+    MgO: 0.3
+    CaO: 10
+    VN: 8
+  autres éléments: MS ≈ 25-30 % (pâteuses chaulées) ; ETM et CTO réglementés
+  forme: N organique + ammoniacal ; P peu soluble eau
+  effet sur le pH: Alcalinisant (si chaulées)
+  agriculture biologique: Non
+  statut AB: non
+  à savoir: Épandage encadré (plan d'épandage, suivi agronomique). Valeurs très variables selon le traitement (chaulage, séchage, compostage).
+  termes de recherche: [biosolides, biosolids, boues chaulees, boues de station d epuration, boues de step, boues sechees, boues urbaines, edar, klarschlamm, lodos de depuradora, sewage sludge]
+  vitesse: 1
+  matériel: [epandeur_fumier]
+  volatilisation: 1
+  coût: 1
+  apports:
+    P: 1
+    N: 1
+    MO: 1
+    pH: 1
+  organique: oui

@@ -125,7 +125,7 @@ explication . chaulage:
     - si: contexte . sol calcaire
       alors: "'Sol calcaire : aucun chaulage nécessaire.'"
     - si: contexte . pH neutre
-      alors: "\"pH correct : pas de redressement nécessaire ; surveiller l'évolution par l'analyse de terre.\""
+      alors: '"pH correct : pas de redressement nécessaire ; surveiller l''évolution par l''analyse de terre."'
 
 explication . chaulage en sol calcaire:
   variations:

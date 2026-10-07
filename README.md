@@ -11,7 +11,7 @@ public/                    ← dossier à publier, tel quel
   index.html
   favicon.svg
   _headers                 en-têtes HTTP pour Netlify et Cloudflare Pages
-  data/products.json       les 59 produits : teneurs, synonymes, attributs agronomiques
+  data/products.json       les 59 produits compilés depuis regles/produits/ (généré, non versionné)
   data/regles.json         règles publicodes compilées (généré, non versionné)
   assets/js/boot.js        charge publicodes, les données et les règles, puis les scripts dans l'ordre
   assets/js/rules.js       référentiels (éléments, matériel, effluents, symptômes) et lecture des cultures dans les règles
@@ -21,7 +21,8 @@ public/                    ← dossier à publier, tel quel
   assets/fonts/            polices hébergées en local (licence OFL incluse)
   assets/vendor/           bibliothèque publicodes copiée depuis node_modules (générée, non versionnée)
 regles/*.publicodes        règles agronomiques : contexte, cultures × stades × besoins
-scripts/build-rules.mjs    compile regles/ vers public/data/regles.json et copie publicodes
+regles/produits/           produits : composition, attributs agronomiques, sources
+scripts/build-rules.mjs    compile regles/ vers public/data/regles.json et products.json, copie publicodes
 scss/style.scss            source des styles, compilée vers public/assets/css/style.css
 tests/engine.test.mjs      tests du moteur (Node, sans dépendance)
 nginx/default.conf         configuration nginx (sécurité, cache, compression)
@@ -49,7 +50,7 @@ Les styles se modifient dans `scss/style.scss`, jamais dans `public/assets/css/s
 npm test        # Node 20 ou plus
 ```
 
-Ils lisent directement les règles de `regles/` (pas besoin de les compiler avant). Ils vérifient l'intégrité des données (identifiants uniques, éléments et matériels connus, produits cités dans les règles existants), que chaque règle publicodes donne un niveau, une note et un repère valides dans tous les contextes de parcelle, et des comportements agronomiques clés : soufre sous forme sulfate en tête sur colza à la reprise, pas d'azote sur légumineuse, exclusion des engrais de synthèse en bio, du phosphate naturel en sol calcaire, etc. À lancer après chaque modification de `products.json`, de `regles/` ou de `rules.js`.
+Ils lisent directement les règles et les produits de `regles/` (pas besoin de les compiler avant). Ils vérifient l'intégrité des données (identifiants uniques, éléments et matériels connus, produits cités dans les règles existants), que chaque règle publicodes donne un niveau, une note et un repère valides dans tous les contextes de parcelle, et des comportements agronomiques clés : soufre sous forme sulfate en tête sur colza à la reprise, pas d'azote sur légumineuse, exclusion des engrais de synthèse en bio, du phosphate naturel en sol calcaire, etc. À lancer après chaque modification de `regles/` ou de `rules.js`.
 
 ## Déployer
 
@@ -99,25 +100,45 @@ Ajouter le domaine du site hôte à `frame-ancestors` dans `public/_headers` ou 
 
 ## Faire évoluer les données et les règles
 
-### Ajouter ou corriger un produit : `public/data/products.json`
+### Ajouter ou corriger un produit : `regles/produits/*.publicodes`
 
-| Champ | Rôle |
+Chaque produit est une règle publicodes `produit . <id>`, dans le fichier de sa catégorie. L'`id` est celui que citent les `préférences` des stades. `npm run build:rules` compile les produits dans `public/data/products.json`, dont le format est celui qu'attendent le moteur et l'interface ; la correspondance des champs est `PRODUCT_FIELDS` dans `scripts/build-rules.mjs`. L'en-tête de `regles/produits/00-produits.publicodes` détaille tous les attributs.
+
+```yaml
+produit . sa:
+  titre: Sulfate d'ammoniaque
+  catégorie: Engrais azoté
+  teneurs:          # en % du produit brut
+    N: 21
+    SO3: 60
+  apports:          # besoins couverts : 1 en partie, 2 source principale
+    N: 1
+    S: 2
+  vitesse: 3        # 1 lente, 2 moyenne, 3 rapide
+  références:       # sources, affichées sur la fiche produit
+    Intitulé de la source: https://…
+```
+
+| Attribut | Rôle |
 |---|---|
-| `id` | identifiant unique, utilisé par les règles (`préférences`) |
-| `name`, `cat`, `syn`, `etr`, `formule`, `forme`, `ph`, `rem`, `autres`, `abTxt` | textes affichés sur la fiche |
-| `aliases` | termes reconnus dans la recherche, **en minuscules, sans accents, apostrophes remplacées par des espaces** (`sulfate d ammo`) |
-| `c` | teneurs en % du produit brut : `N`, `P2O5`, `K2O`, `SO3`, `MgO`, `CaO`, `VN`, `B`, `Mn`, `Zn` |
-| `prov` | besoins couverts : `1` en partie, `2` source principale. Clés : `N`, `P`, `K`, `S`, `Mg`, `pH`, `MO`, `B`, `Mn`, `Zn` |
-| `speed` | vitesse d'action : 1 lente, 2 moyenne, 3 rapide |
-| `equip` | matériels possibles (clés de `EQUIP` dans `rules.js`) |
-| `volat` | sensibilité à la volatilisation ammoniacale, de 0 à 3 |
-| `cost` | coût relatif par unité fertilisante : 1 bas, 2 moyen, 3 élevé |
-| `ab` | `oui`, `non` ou `cond` (sous conditions) |
-| `acid` | effet sur le pH, de -3 (très acidifiant) à +1 |
-| `pav` | phosphore `soluble` (eau) ou `acide` (solubilisé seulement en sol acide) |
-| `ntype` | classe directive nitrates : `I`, `II` ou `III` |
-| `own` | effluent de ferme correspondant (clés de `OWN`), pour le bonus « disponible sur l'exploitation » |
-| `organic`, `liquid`, `foliar`, `foliarOnly`, `cl`, `na`, `nh4` | drapeaux booléens utilisés par les règles d'exclusion et de classement |
+| `titre`, `catégorie`, `autres noms`, `noms étrangers`, `formule chimique`, `autres éléments`, `forme`, `effet sur le pH`, `agriculture biologique`, `à savoir` | textes affichés sur la fiche |
+| `références` | sources de la fiche : un intitulé par source, suivi de son adresse http(s) ; affichées sur la fiche produit |
+| `termes de recherche` | termes reconnus dans la recherche, **en minuscules, sans accents, apostrophes remplacées par des espaces** (`sulfate d ammo`) |
+| `teneurs` | en % du produit brut : `N`, `P2O5`, `K2O`, `SO3`, `MgO`, `CaO`, `VN`, `B`, `Mn`, `Zn` |
+| `apports` | besoins couverts : `1` en partie, `2` source principale. Clés : `N`, `P`, `K`, `S`, `Mg`, `pH`, `MO`, `B`, `Mn`, `Zn` |
+| `vitesse` | vitesse d'action : 1 lente, 2 moyenne, 3 rapide |
+| `matériel` | matériels possibles (clés de `EQUIP` dans `rules.js`) |
+| `volatilisation` | sensibilité à la volatilisation ammoniacale, de 0 à 3 |
+| `coût` | coût relatif par unité fertilisante : 1 bas, 2 moyen, 3 élevé |
+| `statut AB` | `oui`, `non` ou `cond` (sous conditions) |
+| `effet acidifiant` | effet sur le pH, de -3 (très acidifiant) à +1 |
+| `phosphore` | phosphore `soluble` (eau) ou `acide` (solubilisé seulement en sol acide) |
+| `classe nitrates` | classe directive nitrates : `I`, `II` ou `III` |
+| `effluent de ferme` | effluent correspondant (clés de `OWN`), pour le bonus « disponible sur l'exploitation » |
+| `densité` | kg/L, pour les produits liquides |
+| `organique`, `liquide`, `foliaire`, `foliaire seulement`, `chlore`, `sodium`, `ammoniacal` | `oui` / `non`, utilisés par les règles d'exclusion et de classement |
+
+`formule` est un mot réservé de publicodes : d'où `formule chimique`.
 
 ### Ajouter une culture ou ajuster un repère : `regles/*.publicodes`
 
@@ -141,7 +162,7 @@ culture . colza . reprise . soufre . repère:   # repère de dose, en kg/ha
     - sinon: 75
 ```
 
-Les synonymes de culture et les mots-clés de stade sont aussi des termes de recherche, au même format normalisé que les `aliases`. Les ancres YAML (`&nom`, `*nom`) évitent de recopier les stades et besoins communs à plusieurs cultures. `npm run build:rules` signale toute erreur de syntaxe ou référence inconnue.
+Les synonymes de culture et les mots-clés de stade sont aussi des termes de recherche, au même format normalisé que les `aliases`. Les ancres YAML (`&nom`, `*nom`) ne sont pas reconnues par l'extension VS Code Publicodes : recopier plutôt les stades et besoins communs à plusieurs cultures. `npm run build:rules` signale toute erreur de syntaxe ou référence inconnue.
 
 Le reste du classement (exclusions, bonus selon la météo, le matériel ou la priorité) est dans `public/assets/js/engine.js`.
 
